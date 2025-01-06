@@ -1,0 +1,105 @@
+body {
+    font-family: Pretendard, sans-serif;
+    background-color: var(--white);
+    margin: auto;
+}
+
+.header {
+    width: 1040px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    height: var(--size-800);
+    margin: auto auto var(--size-500);
+}
+
+.container {
+    max-width: 1040px;
+    margin: 0 auto;
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.hero {
+    margin-bottom: var(--size-500);
+    height: 148px;
+    width: 1040px;
+    color: var(--white);
+    border-radius: var(--size-100);
+    padding: var(--size-500);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero > p {
+    font: var(--display-L);
+    color: var(--black);
+    margin: auto;
+    text-align: center;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.login-button {
+    height: 32px;
+    padding: 0 var(--size-200) 0 var(--size-200);
+}
+
+.form-container {
+    margin: var(--size-500) auto auto;
+    background-color: white;
+    max-width: 320px;
+}
+
+.form-group {
+    border-radius: var(--size-100);
+    border: var(--gray-100) 1px solid;
+    margin-bottom: var(--size-200);
+}
+
+label {
+    font: var(--bold-S);
+    display: block;
+    margin-top: var(--size-100);
+    margin-left: var(--size-200);
+    font-weight: bold;
+    color: var(--gray-300);
+}
+
+input {
+    font: var(--body-R);
+    border: none;
+    color: var(--gray-200);
+    line-height: 25.6px;
+    width: 288px;
+    margin-left: var(--size-200);
+    margin-top: var(--size-100);
+    margin-bottom: var(--size-100);
+}
+
+.button-wrapper > p {
+    text-align: center;
+    font: var(--body-S);
+    margin-top: var(--size-200);
+}
+
+.button-wrapper > p > a {
+    font: var(--bold-S);
+    cursor: pointer;
+    color: var(--primary);
+}
+
+.submit-button {
+    width: 320px;
+    height: 40px;
+    background-color: var(--primary);
+    margin-top: var(--size-300);
+}
+

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/index.css"/>
+    <link rel="stylesheet" href="../css/foundation.css"/>
+    <title>BoostCamp Web Board Application</title>
+
+    <link rel="icon" href="../x-icon/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<div>
+    <header class="header">
+        <div class="logo">HELLO, WEB!</div>
+        <div>
+            <button class="button login-button">로그인/회원가입</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <p>부스트캠프 백엔드 교육용 페이지</p>
+            <p>HELLO WEB! 입니다.</p>
+        </div>
+
+        <div class="post-container">
+            <div class="post-count">
+                전체 글 60개
+            </div>
+            <table class="board">
+                <thead>
+                <tr>
+                    <th class="table-title">제목</th>
+                    <th class="table-author">작성자</th>
+                    <th class="table-date">작성일시</th>
+                    <th class="table-views">조회수</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="table-title">게시글 제목</td>
+                    <td class="table-author">닉네임</td>
+                    <td class="table-date"> YYYY.MM.DD</td>
+                    <td class="table-views">0</td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="footer-wrapper">
+                <div class="pagination">
+                    <a href="#" class="active">1</a>
+                </div>
+                <button class="button write-button">
+                    글쓰기
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script type="module" src="../js/index.js"></script>
+<script type="module" src="../js/header.js"></script>
+
+</html>

@@ -1,0 +1,56 @@
+import {HttpRequestData, MultipartType} from "./HttpParser";
+import {logger} from "../../core/logger/logger";
+import path from "path";
+import {HTTP_CONTENT_TYPE, HttpContentTypeExt, isHttpContentTypeExt} from "./type/HttpContentType.type";
+import {HttpMethodType} from "./type/HttpMethod.type";
+import {HttpExceptionType} from "./exception/HttpExceptionType";
+import {HttpException} from "./exception/HttpException";
+
+export class HttpRequest {
+
+    readonly method: HttpMethodType;
+    readonly url: string;
+    readonly path: string;
+    readonly params: object;
+    readonly header: object;
+    readonly body: object | undefined;
+    readonly multiparts: MultipartType[] | undefined;
+    readonly ext: HttpContentTypeExt;
+    private authenticated: number | undefined;
+
+    constructor(httpRequestData: HttpRequestData) {
+        this.method = httpRequestData.method;
+        this.url = httpRequestData.url;
+        this.path = httpRequestData.path;
+        this.params = httpRequestData.params;
+        this.ext = this.validateExt(path.extname(this.url));
+        this.header = httpRequestData.headers;
+        this.body = httpRequestData.body;
+        this.multiparts = httpRequestData.multiparts;
+
+        this.logReq();
+    }
+
+    private logReq() {
+        logger.info("Http Request", this);
+    }
+
+    private validateExt(ext: string): HttpContentTypeExt {
+        if(isHttpContentTypeExt(ext)) {
+            return ext;
+        }
+        throw new HttpException(HttpExceptionType.NOT_SUPPORT_EXTENSION);
+    }
+
+    public setAuthenticated(userId: number) {
+        this.authenticated = userId;
+    }
+
+    public getAuthenticated() {
+        if (!this.authenticated) {
+            throw new HttpException(HttpExceptionType.AUTHENTICATED_FAILED);
+        }
+
+        return this.authenticated;
+    }
+}

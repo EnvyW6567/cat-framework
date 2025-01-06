@@ -1,0 +1,39 @@
+{
+  "name": "was",
+  "version": "1.0.0",
+  "description": "",
+  "main": "http.js",
+  "scripts": {
+    "start": "ts-node app.ts",
+    "build": "ts-node generateDependencies.ts",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EnvyW6567/web-be-p2-was.git"
+  },
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
+    "@babel/preset-typescript": "^7.24.7",
+    "@types/bcrypt": "^5.0.2",
+    "@types/jest": "^29.5.13",
+    "@types/uuid": "^10.0.0",
+    "babel-jest": "^29.7.0",
+    "mysql2": "^3.11.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "dotenv": "^16.4.5",
+    "reflect-metadata": "^0.2.2",
+    "ts-node": "^10.9.2",
+    "uuid": "^10.0.0",
+    "winston": "^3.14.2",
+    "winston-loki": "^6.1.2"
+  }
+}

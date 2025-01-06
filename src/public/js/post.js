@@ -1,10 +1,9 @@
-import {fetchWrapper} from "./fetchWrapper.js";
+import { fetchWrapper } from './fetchWrapper.js';
 
 const queryStr = location.search;
 const id = queryStr.split('=')[1];
 
-
-document.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const data = await fetchWrapper.get(`/api/post?id=${id}`);
 
     const $title = document.querySelector('.title-wrapper');
@@ -22,34 +21,34 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 const createTitle = (title) => {
     const $newTitle = document.createElement('div');
-    $newTitle.className = "title-wrapper";
+    $newTitle.className = 'title-wrapper';
     $newTitle.innerHTML += `<p class="title">
         ${title}
-    </p>`
+    </p>`;
 
     return $newTitle;
-}
+};
 
 const createMeta = (author, createdAt) => {
     const $newMeta = document.createElement('div');
 
     const createdAtDate = new Date(createdAt);
-    const createdAtDateTime = createdAtDate.toLocaleDateString().toString() + " " +
-        createdAtDate.toLocaleTimeString();
+    const createdAtDateTime =
+        createdAtDate.toLocaleDateString().toString() + ' ' + createdAtDate.toLocaleTimeString();
 
-    $newMeta.className = "meta-wrapper";
+    $newMeta.className = 'meta-wrapper';
     $newMeta.innerHTML += `<span class="meta-author">작성자 : ${author}</span>
             <span class="meta-created-at">작성일자 : ${createdAtDateTime}</span>
-            <span class="meta-view-count">조회 : 0</span>`
+            <span class="meta-view-count">조회 : 0</span>`;
 
     return $newMeta;
-}
+};
 
 const createContent = (content) => {
     const $newContent = document.createElement('div');
 
-    $newContent.className = "content-wrapper";
-    $newContent.innerHTML += `<p>${content}</p>`
+    $newContent.className = 'content-wrapper';
+    $newContent.innerHTML += `<p>${content}</p>`;
 
     return $newContent;
-}
+};

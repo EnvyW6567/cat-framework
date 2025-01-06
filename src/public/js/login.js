@@ -1,4 +1,4 @@
-import {fetchWrapper} from './fetchWrapper.js';
+import { fetchWrapper } from './fetchWrapper.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
@@ -15,15 +15,16 @@ const loginHandler = (event) => {
     const password = document.getElementById('password').value;
 
     if (!email || !password) {
-        alert("입력란을 채워주세요!");
+        alert('입력란을 채워주세요!');
 
         return;
     }
 
-    fetchWrapper.post('/api/user/login', {
-        email,
-        password
-    })
+    fetchWrapper
+        .post('/api/user/login', {
+            email,
+            password,
+        })
         .then((data) => {
             if (data.sessionId) {
                 localStorage.setItem('sessionId', data.sessionId);
@@ -36,8 +37,8 @@ const loginHandler = (event) => {
         .catch((error) => {
             window.alert(`로그인 실패. ${error}`);
         });
-}
+};
 
 const goSignupHandler = () => {
-    location.assign("http://localhost:3000/signup");
-}
+    location.assign('http://localhost:3000/signup');
+};

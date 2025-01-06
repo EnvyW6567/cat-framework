@@ -1,4 +1,4 @@
-import {BaseError} from "../../../core/error/BaseError";
+import { BaseError } from '../../../core/error/BaseError';
 
 export class SessionError extends BaseError {
     constructor(exceptionType: ErrorType) {

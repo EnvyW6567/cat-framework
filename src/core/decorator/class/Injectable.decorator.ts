@@ -1,10 +1,10 @@
-import "reflect-metadata";
-import {DIContainer} from "../../container/DIContainer";
+import 'reflect-metadata';
+import { DIContainer } from '../../container/DIContainer';
 
 type InjectableType = 'controller' | 'service' | 'repository' | 'injectable';
 
 function createInjectableDecorator(type: InjectableType) {
-    return function(name?: string): ClassDecorator {
+    return function (name?: string): ClassDecorator {
         return function (target: any) {
             const dependencyName = name || target.name;
 
@@ -14,7 +14,7 @@ function createInjectableDecorator(type: InjectableType) {
 
             return target;
         };
-    }
+    };
 }
 
 export const Injectable = createInjectableDecorator('injectable');

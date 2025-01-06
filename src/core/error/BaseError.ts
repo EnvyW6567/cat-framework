@@ -1,7 +1,6 @@
-import {logger} from "../logger/Logger";
+import { logger } from '../logger/Logger';
 
 export class BaseError extends Error {
-
     private readonly code: number;
     private readonly exceptionType: string;
 
@@ -14,7 +13,7 @@ export class BaseError extends Error {
         logger.warn(exceptionType.message, exceptionType);
     }
 
-    getExceptionType() {
+    getErrorType() {
         return this.exceptionType;
     }
 

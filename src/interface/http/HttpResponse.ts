@@ -1,9 +1,9 @@
-import net from "node:net";
-import {HTTP_STATUS, HttpStatusType} from "./type/HttpStatus.type";
-import {HTTP_CONTENT_TYPE, HttpContentTypeType} from "./type/HttpContentType.type";
-import {SetCookieType} from "./type/SetCookie.type";
-import {HeaderType} from "./HttpResponse.dto";
-import {CRLF} from "./constants/constants";
+import net from 'node:net';
+import { HTTP_STATUS, HttpStatusType } from './type/HttpStatus.type';
+import { HTTP_CONTENT_TYPE, HttpContentTypeType } from './type/HttpContentType.type';
+import { SetCookieType } from './type/SetCookie.type';
+import { HeaderType } from './HttpResponse.dto';
+import { CRLF } from './constants/constants';
 
 export class HttpResponse {
     private readonly socket;
@@ -14,8 +14,8 @@ export class HttpResponse {
     constructor(socket: net.Socket) {
         this.socket = socket;
         this.statusCode = 200;
-        this.headers = new Map<string, string>;
-        this.body = "";
+        this.headers = new Map<string, string>();
+        this.body = '';
     }
 
     public send() {
@@ -60,18 +60,18 @@ export class HttpResponse {
     }
 
     public setContentType(contentType: HttpContentTypeType) {
-        this.setHeader("Content-Type", contentType);
+        this.setHeader('Content-Type', contentType);
 
         return this;
     }
 
     public setContentLength() {
         if (this.body instanceof Buffer) {
-            this.setHeader("Content-Length", this.body.byteLength);
+            this.setHeader('Content-Length', this.body.byteLength);
 
             return;
         }
-        this.setHeader("Content-Length", Buffer.from(this.body, "utf8").byteLength);
+        this.setHeader('Content-Length', Buffer.from(this.body, 'utf8').byteLength);
     }
 
     public setCookie(setCookie: SetCookieType): HttpResponse {
@@ -79,10 +79,10 @@ export class HttpResponse {
 
         if (setCookie.options) {
             cookieStr += Object.entries(setCookie.options)
-                .map(([key, value]) => typeof value === "boolean" ? key : `${key}=${value}`)
+                .map(([key, value]) => (typeof value === 'boolean' ? key : `${key}=${value}`))
                 .join(';');
         }
-        this.headers.set("Set-Cookie", cookieStr);
+        this.headers.set('Set-Cookie', cookieStr);
 
         return this;
     }
@@ -93,7 +93,9 @@ export class HttpResponse {
             .map(([name, value]) => `${name}: ${value}`)
             .join(CRLF);
 
-        return Buffer.concat([Buffer.from(`${statusLine}${headers}${CRLF + CRLF}`),
-            this.body instanceof Buffer ? this.body : Buffer.from(this.body, "utf8")]);
+        return Buffer.concat([
+            Buffer.from(`${statusLine}${headers}${CRLF + CRLF}`),
+            this.body instanceof Buffer ? this.body : Buffer.from(this.body, 'utf8'),
+        ]);
     }
 }

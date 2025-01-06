@@ -5,8 +5,7 @@ export class DIContainer {
     private instantiating: Set<string> = new Set();
     private instances: Map<string, any> = new Map();
 
-    private constructor() {
-    }
+    private constructor() {}
 
     static getInstance(): DIContainer {
         if (!DIContainer.instance) {

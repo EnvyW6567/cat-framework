@@ -1,20 +1,20 @@
-import {HttpResponse} from "../../http/HttpResponse";
-import {HttpRequest} from "../../http/HttpRequest";
-import {Injectable} from "../../../core/decorator/class/Injectable.decorator";
-import {SessionManager} from "../../session/SessionManager";
-import {SessionError} from "../../session/error/SessionError";
-import {SessionErrorType} from "../../session/error/SessionErrorType";
-import {UserRoleType} from "../../session/Role.type";
-import {Middleware} from "../Middleware";
+import { HttpResponse } from '../../http/HttpResponse';
+import { HttpRequest } from '../../http/HttpRequest';
+import { Injectable } from '../../../core/decorator/class/Injectable.decorator';
+import { SessionManager } from '../../session/SessionManager';
+import { SessionError } from '../../session/error/SessionError';
+import { SessionErrorType } from '../../session/error/SessionErrorType';
+import { UserRoleType } from '../../session/Role.type';
+import { Middleware } from '../Middleware';
 
-const AUTHORIZATION = "Authorization"
+const AUTHORIZATION = 'Authorization';
 
 type AuthorizedPathType = {
     [key: string]: UserRoleType[];
-}
+};
 
 @Injectable()
-export class SessionHandler implements Middleware{
+export class SessionHandler implements Middleware {
     private readonly authorizedPath: AuthorizedPathType;
 
     constructor(private readonly sessionManager: SessionManager) {
@@ -40,12 +40,11 @@ export class SessionHandler implements Middleware{
         }
     }
 
-    public pathMatcher(path:string, ...roles: UserRoleType[]) {
+    public pathMatcher(path: string, ...roles: UserRoleType[]) {
         this.authorizedPath[path] = roles;
 
         return this;
     }
-
 
     private verify(header: object) {
         if (AUTHORIZATION in header) {

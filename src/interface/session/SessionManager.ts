@@ -1,19 +1,19 @@
-import {v4 as uuid} from 'uuid';
+import { v4 as uuid } from 'uuid';
 
-import {Injectable} from "../../core/decorator/class/Injectable.decorator";
-import {SessionErrorType} from "./error/SessionErrorType";
-import {SessionError} from "./error/SessionError";
+import { Injectable } from '../../core/decorator/class/Injectable.decorator';
+import { SessionErrorType } from './error/SessionErrorType';
+import { SessionError } from './error/SessionError';
 
 const weekMs = 1000 * 3600 * 24 * 7;
 
 type SessionDataType = {
-    userId: number,
-    expiredAt: Date
-}
+    userId: number;
+    expiredAt: Date;
+};
 
 type SessionType = {
-    [key: string]: SessionDataType
-}
+    [key: string]: SessionDataType;
+};
 
 @Injectable()
 export class SessionManager {
@@ -43,18 +43,20 @@ export class SessionManager {
 
     public register(userId: number) {
         const curDate = new Date();
-        const sessionId = this.generateSessionId()
+        const sessionId = this.generateSessionId();
 
         this.sessionStorage[sessionId] = {
             userId,
-            expiredAt: new Date(curDate.getTime() + weekMs)
+            expiredAt: new Date(curDate.getTime() + weekMs),
         };
 
         return sessionId;
     }
 
     public remove(userId: number) {
-        const sessionId = Object.keys(this.sessionStorage).find(key => this.sessionStorage[key].userId === userId);
+        const sessionId = Object.keys(this.sessionStorage).find(
+            (key) => this.sessionStorage[key].userId === userId,
+        );
 
         if (sessionId) {
             delete this.sessionStorage[sessionId];
@@ -67,5 +69,4 @@ export class SessionManager {
     private generateSessionId() {
         return uuid();
     }
-
 }

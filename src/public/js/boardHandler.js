@@ -1,14 +1,14 @@
-import {fetchWrapper} from "./fetchWrapper.js";
+import { fetchWrapper } from './fetchWrapper.js';
 
-const TOTAL = "전체글 ";
-const COUNT = "개";
+const TOTAL = '전체글 ';
+const COUNT = '개';
 const OFFSET = 10;
 
 export const boardHandler = async (page, size) => {
     const result = await fetchWrapper.get(`/api/post/board?size=${size}&page=${page - 1}`);
 
     return createPostContainer(result, page);
-}
+};
 
 const createPostContainer = (result, page) => {
     const total = result.total;
@@ -20,22 +20,22 @@ const createPostContainer = (result, page) => {
 
     const postContainer = document.createElement('div');
 
-    postContainer.className = "post-container";
+    postContainer.className = 'post-container';
     postContainer.appendChild(postCount);
     postContainer.appendChild(postTable);
     postContainer.appendChild(footerWrapper);
 
     return postContainer;
-}
+};
 
 const createPostCount = (total) => {
     const count = document.createElement('div');
 
-    count.className = "post-count";
+    count.className = 'post-count';
     count.textContent = TOTAL + total + COUNT;
 
     return count;
-}
+};
 
 const createPostTable = (board) => {
     const table = document.createElement('table');
@@ -52,11 +52,11 @@ const createPostTable = (board) => {
     </tr>
   `;
 
-    board.forEach(post => {
+    board.forEach((post) => {
         const tr = document.createElement('tr');
 
-        tr.id = post.id
-        tr.className = "post"
+        tr.id = post.id;
+        tr.className = 'post';
         tr.addEventListener('click', (event) => postHandler(event));
         tr.innerHTML = `
       <td class="table-title">${post.title}</td>
@@ -69,20 +69,20 @@ const createPostTable = (board) => {
 
     table.appendChild(thead);
     table.appendChild(tbody);
-    table.className = "board";
+    table.className = 'board';
 
     return table;
-}
+};
 
 const createFooterWrapper = (total, page) => {
-    const footerWrapper = document.createElement("div");
-    const pagination = document.createElement("div");
-    const writeButton = document.createElement("button");
+    const footerWrapper = document.createElement('div');
+    const pagination = document.createElement('div');
+    const writeButton = document.createElement('button');
 
-    footerWrapper.className = "footer-wrapper";
-    pagination.className = "pagination";
-    writeButton.className = "button write-button";
-    writeButton.textContent = "글쓰기";
+    footerWrapper.className = 'footer-wrapper';
+    pagination.className = 'pagination';
+    writeButton.className = 'button write-button';
+    writeButton.textContent = '글쓰기';
 
     let totalPage = Math.ceil(total / OFFSET);
     let startPage = 1;
@@ -110,7 +110,7 @@ const createFooterWrapper = (total, page) => {
 
     for (let p = startPage; p <= endPage; p++) {
         if (p === page) {
-            pagination.innerHTML += `<div class="active page" id="page_${p}">${p}</div>`
+            pagination.innerHTML += `<div class="active page" id="page_${p}">${p}</div>`;
             continue;
         }
         pagination.innerHTML += `<div class="page" id="page_${p}">${p}</div>`;
@@ -120,13 +120,13 @@ const createFooterWrapper = (total, page) => {
     footerWrapper.appendChild(writeButton);
 
     return footerWrapper;
-}
+};
 
 const postHandler = (event) => {
     const postId = event.currentTarget.id;
 
     location.assign(`http://localhost:3000/post?id=${postId}`);
-}
+};
 
 const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -135,4 +135,4 @@ const formatDate = (dateString) => {
     const day = String(date.getDate()).padStart(2, '0');
 
     return `${year}.${month}.${day}`;
-}
+};

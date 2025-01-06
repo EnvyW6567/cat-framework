@@ -1,10 +1,9 @@
-import {UserEntity} from "../../../../domain/user/User.entity";
-import {MapperException} from "../exception/MapperException";
-import {MapperExceptionType} from "../exception/MapperExceptionType";
-import {IsNotEmpty} from "class-validator";
+import { UserEntity } from '../../../../domain/user/User.entity';
+import { MapperException } from '../exception/MapperException';
+import { MapperExceptionType } from '../exception/MapperExceptionType';
+import { IsNotEmpty } from 'class-validator';
 
 export class SignupResDto {
-
     @IsNotEmpty()
     readonly email: string;
     @IsNotEmpty()

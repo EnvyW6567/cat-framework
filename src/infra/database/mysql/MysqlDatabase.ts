@@ -1,8 +1,8 @@
-import mysql, {Pool, PoolOptions} from 'mysql2/promise'
-import {logger} from "../../../core/logger/Logger";
-import {Injectable} from "../../../core/decorator/class/Injectable.decorator";
-import {MysqlError} from "./error/MysqlError";
-import {MysqlErrorType} from "./error/MysqlErrorType";
+import mysql, { Pool, PoolOptions } from 'mysql2/promise';
+import { logger } from '../../../core/logger/Logger';
+import { Injectable } from '../../../core/decorator/class/Injectable.decorator';
+import { MysqlError } from './error/MysqlError';
+import { MysqlErrorType } from './error/MysqlErrorType';
 
 @Injectable()
 export class MysqlDatabase {
@@ -32,7 +32,7 @@ export class MysqlDatabase {
 
             return results;
         } catch (error) {
-            logger.warn("query failed", error);
+            logger.warn('query failed', error);
             throw new MysqlError(MysqlErrorType.QUERY_FAILED);
         }
     }

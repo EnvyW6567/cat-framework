@@ -1,6 +1,6 @@
-import {UserEntity} from "../../../../domain/user/User.entity";
-import {MapperException} from "../exception/MapperException";
-import {MapperExceptionType} from "../exception/MapperExceptionType";
+import { UserEntity } from '../../../../domain/user/User.entity';
+import { MapperException } from '../exception/MapperException';
+import { MapperExceptionType } from '../exception/MapperExceptionType';
 
 export class LoginResDto {
     readonly id: number;

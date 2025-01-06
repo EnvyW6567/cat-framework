@@ -1,8 +1,8 @@
-import {Injectable} from "../../core/decorator/class/Injectable.decorator";
-import {Middleware} from "./Middleware";
-import {Iterator} from "../../core/iterator/Iterator";
-import {HttpResponse} from "../http/HttpResponse";
-import {HttpRequest} from "../http/HttpRequest";
+import { Injectable } from '../../core/decorator/class/Injectable.decorator';
+import { Middleware } from './Middleware';
+import { Iterator } from '../../core/iterator/Iterator';
+import { HttpResponse } from '../http/HttpResponse';
+import { HttpRequest } from '../http/HttpRequest';
 
 @Injectable()
 export class MiddlewareIterator implements Iterator {
@@ -34,9 +34,14 @@ export class MiddlewareIterator implements Iterator {
         this.handleError(err);
 
         try {
-            return await this.middlewares[this.position].handle(this.req, this.res, this.next.bind(this), err);
+            return await this.middlewares[this.position].handle(
+                this.req,
+                this.res,
+                this.next.bind(this),
+                err,
+            );
         } catch (e) {
-            e instanceof Error && await this.next(e as Error);
+            e instanceof Error && (await this.next(e as Error));
         }
     }
 

@@ -1,4 +1,4 @@
-import winston from "winston";
+import winston from 'winston';
 import path from 'path';
 
 class Logger {
@@ -28,23 +28,31 @@ class Logger {
             level: process.env.LOG_LEVEL || 'info',
             format: winston.format.combine(
                 winston.format.timestamp({
-                    format: 'YYYY-MM-DD HH:mm:ss'
+                    format: 'YYYY-MM-DD HH:mm:ss',
                 }),
-                winston.format.json()
+                winston.format.json(),
             ),
             transports: [
-                new winston.transports.File({ filename: path.join(this.logDir, 'error.log'), level: 'error' }),
-                new winston.transports.File({ filename: path.join(this.logDir, 'warn.log'), level: 'warn' }),
+                new winston.transports.File({
+                    filename: path.join(this.logDir, 'error.log'),
+                    level: 'error',
+                }),
+                new winston.transports.File({
+                    filename: path.join(this.logDir, 'warn.log'),
+                    level: 'warn',
+                }),
                 new winston.transports.File({ filename: path.join(this.logDir, 'combined.log') }),
             ],
-        }
+        };
     }
 
     private developOption(logger: winston.Logger): void {
         if (process.env.NODE_ENV !== 'production') {
-            logger.add(new winston.transports.Console({
-                format: winston.format.prettyPrint(),
-            }));
+            logger.add(
+                new winston.transports.Console({
+                    format: winston.format.prettyPrint(),
+                }),
+            );
         }
     }
 

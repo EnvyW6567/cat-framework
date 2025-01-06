@@ -6,8 +6,8 @@ export const HTTP_CONTENT_TYPE = {
     '.png': 'image/png',
     '.jpg': 'image/jpeg',
     '': 'application/json',
-    'json': 'application/json'
-} as const
+    json: 'application/json',
+} as const;
 
 export const CONTENT_TYPE_PATH: Record<HttpContentTypeType, string> = {
     'application/javascript': '',
@@ -15,12 +15,12 @@ export const CONTENT_TYPE_PATH: Record<HttpContentTypeType, string> = {
     'image/x-icon': '',
     'text/css': '',
     'text/html': '',
-    'image/png' : '/png',
-    'image/jpeg' : '/jpeg'
-}
+    'image/png': '/png',
+    'image/jpeg': '/jpeg',
+};
 
 export type HttpContentTypeExt = keyof typeof HTTP_CONTENT_TYPE;
-export type HttpContentTypeType = typeof HTTP_CONTENT_TYPE[HttpContentTypeExt];
+export type HttpContentTypeType = (typeof HTTP_CONTENT_TYPE)[HttpContentTypeExt];
 
 export const VALID_HTTP_Content_Type = new Set(Object.values(HTTP_CONTENT_TYPE));
 

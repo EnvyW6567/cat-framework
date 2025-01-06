@@ -5,12 +5,12 @@ import {
     CONTENT_LENGTH,
     CONTENT_TYPE,
     CRLF,
-    MULTIPART_FORM_DATA
-} from "./constants/constants";
-import {HeadersType, HttpRequestData, HttpParser, MultipartType} from "./HttpParser";
-import {HttpError} from "./error/HttpError";
-import {HttpErrorType} from "./error/HttpErrorType";
-import {validateHttpContentType} from "./type/HttpContentType.type";
+    MULTIPART_FORM_DATA,
+} from './constants/constants';
+import { HeadersType, HttpRequestData, HttpParser, MultipartType } from './HttpParser';
+import { HttpError } from './error/HttpError';
+import { HttpErrorType } from './error/HttpErrorType';
+import { validateHttpContentType } from './type/HttpContentType.type';
 
 export class HttpRequestHandler {
     private buffer: Buffer;
@@ -27,20 +27,16 @@ export class HttpRequestHandler {
     handleData(chunk: Buffer) {
         this.buffer = Buffer.concat([this.buffer, chunk]);
 
-        if (!this.headers) this.resolveHeader();
-
-        if (this.headers) {
-            console.log(this.headers);
-            console.log(this.contentLength);
+        if (!this.headers) {
+            this.resolveHeader();
+        } else {
             if (this.contentLength === 0) {
                 return true;
             }
-
             if (this.headers[CONTENT_TYPE]?.includes(MULTIPART_FORM_DATA)) {
                 return this.resolveMultipart();
-            } else {
-                return this.resolveJsonBody();
             }
+            return this.resolveJsonBody();
         }
         return false;
     }
@@ -70,7 +66,7 @@ export class HttpRequestHandler {
 
                 if (boundaryMatch) {
                     this.boundary = boundaryMatch[1];
-                    this.headers[CONTENT_TYPE] = this.headers[CONTENT_TYPE].split(":")[0];
+                    this.headers[CONTENT_TYPE] = this.headers[CONTENT_TYPE].split(':')[0];
                 }
             }
 
@@ -98,9 +94,9 @@ export class HttpRequestHandler {
 
         if (this.httpRequestData) {
             const body = data.subarray(multipartHeaderEnd + BYTE_SIZE);
-            const {filename, contentType} = this.parseMultipartHeader(multipartHeader);
+            const { filename, contentType } = this.parseMultipartHeader(multipartHeader);
 
-            const multipart: MultipartType = {filename, contentType, body};
+            const multipart: MultipartType = { filename, contentType, body };
 
             this.httpRequestData.multiparts = [multipart];
 
@@ -119,7 +115,7 @@ export class HttpRequestHandler {
             const filename = filenameMatch[1];
             const contentType = contentTypeMatch[1];
 
-            if (validateHttpContentType(contentType) && filename) return {filename, contentType};
+            if (validateHttpContentType(contentType) && filename) return { filename, contentType };
         }
 
         throw new HttpError(HttpErrorType.INVALID_FILE_TYPE);

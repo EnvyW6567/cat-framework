@@ -1,6 +1,6 @@
-import {PostEntity} from "../../../../domain/post/Post.entity";
-import {MapperException} from "../exception/MapperException";
-import {MapperExceptionType} from "../exception/MapperExceptionType";
+import { PostEntity } from '../../../../domain/post/Post.entity';
+import { MapperException } from '../exception/MapperException';
+import { MapperExceptionType } from '../exception/MapperExceptionType';
 
 export class PostDto {
     readonly id: number;

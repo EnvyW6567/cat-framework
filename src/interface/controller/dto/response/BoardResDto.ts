@@ -1,6 +1,6 @@
-import {PostDto} from "../entity/PostDto";
-import {MapperException} from "../exception/MapperException";
-import {MapperExceptionType} from "../exception/MapperExceptionType";
+import { PostDto } from '../entity/PostDto';
+import { MapperException } from '../exception/MapperException';
+import { MapperExceptionType } from '../exception/MapperExceptionType';
 
 export class BoardResDto {
     readonly board: PostDto[];

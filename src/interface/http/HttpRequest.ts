@@ -1,13 +1,12 @@
-import {HttpRequestData, MultipartType} from "./HttpParser";
-import {logger} from "../../core/logger/Logger";
-import path from "path";
-import {HttpContentTypeExt, isHttpContentTypeExt} from "./type/HttpContentType.type";
-import {HttpMethodType} from "./type/HttpMethod.type";
-import {HttpErrorType} from "./error/HttpErrorType";
-import {HttpError} from "./error/HttpError";
+import { HttpRequestData, MultipartType } from './HttpParser';
+import { logger } from '../../core/logger/Logger';
+import path from 'path';
+import { HttpContentTypeExt, isHttpContentTypeExt } from './type/HttpContentType.type';
+import { HttpMethodType } from './type/HttpMethod.type';
+import { HttpErrorType } from './error/HttpErrorType';
+import { HttpError } from './error/HttpError';
 
 export class HttpRequest {
-
     readonly method: HttpMethodType;
     readonly url: string;
     readonly path: string;
@@ -32,11 +31,11 @@ export class HttpRequest {
     }
 
     private logReq() {
-        logger.info("Http Request", this);
+        logger.info('Http Request', this);
     }
 
     private validateExt(ext: string): HttpContentTypeExt {
-        if(isHttpContentTypeExt(ext)) {
+        if (isHttpContentTypeExt(ext)) {
             return ext;
         }
         throw new HttpError(HttpErrorType.NOT_SUPPORT_EXTENSION);

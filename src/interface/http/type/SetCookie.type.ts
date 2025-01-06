@@ -1,5 +1,5 @@
 export type SetCookieType = {
-    name: string,
-    value: string | number,
-    options: {}
-}
+    name: string;
+    value: string | number;
+    options: {};
+};

@@ -41,7 +41,7 @@ describe('Router 테스트', () => {
 
     const testRoute = async (method: HttpMethodType, url: string, ext: HttpContentTypeExt = '') => {
         const mockRequest = createMockRequest(method, url, ext);
-        await router.handle(mockRequest, mockResponse);
+        await router.handle(mockRequest, mockResponse, ()=>{});
         return mockRequest;
     };
 
@@ -50,7 +50,7 @@ describe('Router 테스트', () => {
         (fs.readFile as jest.Mock).mockResolvedValue(mockFileContent);
 
         const mockRequest = createMockRequest('GET', url, ext);
-        await router.handle(mockRequest, mockResponse);
+        await router.handle(mockRequest, mockResponse, () => {});
 
         expect(fs.readFile).toHaveBeenCalledWith(expectedPath);
         expect(mockResponse.setBody).toHaveBeenCalledWith(mockFileContent);
@@ -60,7 +60,7 @@ describe('Router 테스트', () => {
         it('없는 path 요청 시', () => {
             const mockRequest = createMockRequest('GET', '/test/not-found');
 
-            expect(async () => await router.handle(mockRequest, mockResponse)).rejects.toThrow(HttpError);
+            expect(async () => await router.handle(mockRequest, mockResponse, () => {})).rejects.toThrow(HttpError);
         });
     });
 

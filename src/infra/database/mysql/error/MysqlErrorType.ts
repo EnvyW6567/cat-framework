@@ -1,4 +1,4 @@
-export const MysqlExceptionType = {
+export const MysqlErrorType = {
     CONNECTION_FAILED: {
         name: "CONNECTION_FAILED",
         code: 500,

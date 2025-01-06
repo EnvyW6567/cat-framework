@@ -1,4 +1,4 @@
-export const HttpExceptionType = {
+export const HttpErrorType = {
     INVALID_HTTP_STARTLINE: {
         name: "INVALID_HTTP_STARTLINE",
         code: 400,

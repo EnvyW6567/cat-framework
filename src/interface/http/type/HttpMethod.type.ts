@@ -1,5 +1,5 @@
-import {HttpException} from "../exception/HttpException";
-import {HttpExceptionType} from "../exception/HttpExceptionType";
+import {HttpError} from "../error/HttpError";
+import {HttpErrorType} from "../error/HttpErrorType";
 
 export const HTTP_METHOD = ["GET", "POST", "PATCH", "DELETE", "PUT"] as const;
 
@@ -9,5 +9,5 @@ export const isHttpMethodType = (method: string): method is HttpMethodType => {
     if (HTTP_METHOD.includes(method as HttpMethodType)) {
         return true;
     }
-    throw new HttpException(HttpExceptionType.INVALID_HTTP_METHOD);
+    throw new HttpError(HttpErrorType.INVALID_HTTP_METHOD);
 }

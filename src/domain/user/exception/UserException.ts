@@ -1,7 +1,7 @@
-import {BaseException} from "../../../core/exception/BaseException";
+import {BaseError} from "../../../core/error/BaseError";
 
-export class UserException extends BaseException{
-    constructor(exceptionType: ExceptionType) {
+export class UserException extends BaseError{
+    constructor(exceptionType: ErrorType) {
         super(exceptionType);
     }
 }

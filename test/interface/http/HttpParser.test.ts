@@ -1,8 +1,8 @@
 import {describe, test, expect, beforeEach} from "@jest/globals";
 import {HttpParser} from "../../../src/interface/http/HttpParser";
-import {HttpException} from "../../../src/interface/http/exception/HttpException";
-import {BaseException} from "../../../src/core/exception/BaseException";
-import {HttpExceptionType} from "../../../src/interface/http/exception/HttpExceptionType";
+import {HttpError} from "../../../src/interface/http/error/HttpError";
+import {BaseError} from "../../../src/core/error/BaseError";
+import {HttpErrorType} from "../../../src/interface/http/error/HttpErrorType";
 
 describe('HttpParser 테스트', () => {
     let httpParser: HttpParser;
@@ -86,32 +86,32 @@ describe('HttpParser 테스트', () => {
         {
             name: '잘못된 Http Method 요청',
             request: `POT /api/login HTTP/1.1\r\nAuthorization: Bearer token123\r\n\r\n`,
-            exceptionClass: HttpException,
-            exceptionType: HttpExceptionType.INVALID_HTTP_METHOD.name
+            exceptionClass: HttpError,
+            exceptionType: HttpErrorType.INVALID_HTTP_METHOD.name
         },
         {
             name: '잘못된 JSON 형식의 body',
             request: `POST /api/users HTTP/1.1\r\nContent-Type: application/json\r\n\r\n{"invalid": "json",}`,
-            exceptionClass: HttpException,
-            exceptionType: HttpExceptionType.INVALID_JSON_TYPE.name
+            exceptionClass: HttpError,
+            exceptionType: HttpErrorType.INVALID_JSON_TYPE.name
         },
         {
             name: 'HTTP 버전 누락',
             request: `GET /api/users\r\nHost: example.com\r\n\r\n`,
-            exceptionClass: HttpException,
-            exceptionType: HttpExceptionType.INVALID_HTTP_STARTLINE.name
+            exceptionClass: HttpError,
+            exceptionType: HttpErrorType.INVALID_HTTP_STARTLINE.name
         },
         {
           name: '잘못된 HTTP 버전,',
             request: `POST /api/users HTTP/1.3\r\nContent-Type: application/json\r\n\r\n{"invalid": "json",}`,
-            exceptionClass: HttpException,
-            exceptionType: HttpExceptionType.INVALID_HTTP_VERSION.name
+            exceptionClass: HttpError,
+            exceptionType: HttpErrorType.INVALID_HTTP_VERSION.name
         },
         {
             name: '헤더 형식 오류 - value 누락',
             request: `POST /api/users HTTP/1.1\r\nContent-Type: application/json\r\nInvalid-Header\r\n\r\n{"id": 1}`,
-            exceptionClass: HttpException,
-            exceptionType: HttpExceptionType.BAD_HTTP_HEADER_TYPE.name
+            exceptionClass: HttpError,
+            exceptionType: HttpErrorType.BAD_HTTP_HEADER_TYPE.name
         }
     ];
 
@@ -120,7 +120,7 @@ describe('HttpParser 테스트', () => {
             try {
                 httpParser.parse(request);
             } catch(error) {
-                if (error instanceof BaseException) {
+                if (error instanceof BaseError) {
                     expect(error.getExceptionType()).toEqual(exceptionType);
                     throw error;
                 }

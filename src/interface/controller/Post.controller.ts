@@ -1,7 +1,7 @@
 import {Controller} from "../../core/decorator/class/Controller.decorator";
 import {PostService} from "../../domain/post/Post.service";
 import {GetMapping, PostMapping} from "../../core/decorator/method/RequestMapper.decorator";
-import {RequestParam} from "../../core/decorator/param/ReqeustParam.decorator";
+import {RequestParam} from "../../core/decorator/param/RequestParam.decorator";
 import {BoardReqDto} from "./dto/request/BoardReqDto";
 import {HttpResponseDto} from "../http/HttpResponse.dto";
 import {PostReqDto} from "./dto/request/PostReq.dto";

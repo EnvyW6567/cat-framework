@@ -1,8 +1,8 @@
 import {v4 as uuid} from 'uuid';
 
 import {Injectable} from "../../core/decorator/class/Injectable.decorator";
-import {SessionExceptionType} from "./exception/SessionExceptionType";
-import {SessionException} from "./exception/SessionException";
+import {SessionErrorType} from "./error/SessionErrorType";
+import {SessionError} from "./error/SessionError";
 
 const weekMs = 1000 * 3600 * 24 * 7;
 
@@ -28,7 +28,7 @@ export class SessionManager {
 
         if (sessionData.expiredAt < new Date()) {
             delete this.sessionStorage[sessionId];
-            throw new SessionException(SessionExceptionType.EXPIRED_SESSION_ID);
+            throw new SessionError(SessionErrorType.EXPIRED_SESSION_ID);
         }
 
         return sessionData.userId;
@@ -38,7 +38,7 @@ export class SessionManager {
         if (sessionId in this.sessionStorage) {
             return this.sessionStorage[sessionId];
         }
-        throw new SessionException(SessionExceptionType.INVALID_SESSION_ID);
+        throw new SessionError(SessionErrorType.INVALID_SESSION_ID);
     }
 
     public register(userId: number) {
@@ -61,7 +61,7 @@ export class SessionManager {
 
             return;
         }
-        throw new SessionException(SessionExceptionType.NOT_FOUND_SESSION);
+        throw new SessionError(SessionErrorType.NOT_FOUND_SESSION);
     }
 
     private generateSessionId() {

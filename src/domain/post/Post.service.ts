@@ -50,5 +50,4 @@ export class PostService {
 
         return await this.postRepository.save(newPost);
     }
-
 }

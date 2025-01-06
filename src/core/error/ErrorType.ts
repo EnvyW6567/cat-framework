@@ -1,4 +1,4 @@
-interface ExceptionType {
+interface ErrorType {
     name: string;
     code: number;
     message: string;

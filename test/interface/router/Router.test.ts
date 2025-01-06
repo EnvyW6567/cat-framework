@@ -7,7 +7,7 @@ import {HttpRequest} from "../../../src/interface/http/HttpRequest";
 import {HttpResponse} from "../../../src/interface/http/HttpResponse";
 import {HttpContentTypeExt} from "../../../src/interface/http/type/HttpContentType.type";
 import {HttpMethodType} from "../../../src/interface/http/type/HttpMethod.type";
-import {HttpException} from "../../../src/interface/http/exception/HttpException";
+import {HttpError} from "../../../src/interface/http/error/HttpError";
 
 dotenv.config();
 jest.mock('fs/promises');
@@ -60,7 +60,7 @@ describe('Router 테스트', () => {
         it('없는 path 요청 시', () => {
             const mockRequest = createMockRequest('GET', '/test/not-found');
 
-            expect(async () => await router.handle(mockRequest, mockResponse)).rejects.toThrow(HttpException);
+            expect(async () => await router.handle(mockRequest, mockResponse)).rejects.toThrow(HttpError);
         });
     });
 

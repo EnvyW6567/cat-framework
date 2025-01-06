@@ -2,8 +2,8 @@ import {HttpResponse} from "../../http/HttpResponse";
 import {HttpRequest} from "../../http/HttpRequest";
 import {Injectable} from "../../../core/decorator/class/Injectable.decorator";
 import {SessionManager} from "../../session/SessionManager";
-import {SessionException} from "../../session/exception/SessionException";
-import {SessionExceptionType} from "../../session/exception/SessionExceptionType";
+import {SessionError} from "../../session/error/SessionError";
+import {SessionErrorType} from "../../session/error/SessionErrorType";
 import {UserRoleType} from "../../session/Role.type";
 import {Middleware} from "../Middleware";
 
@@ -54,6 +54,6 @@ export class SessionHandler implements Middleware{
             return this.sessionManager.verify(sessionId);
         }
 
-        throw new SessionException(SessionExceptionType.NOT_FOUND_SESSION);
+        throw new SessionError(SessionErrorType.NOT_FOUND_SESSION);
     }
 }

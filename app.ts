@@ -5,7 +5,7 @@ import {Injectable} from "./src/core/decorator/class/Injectable.decorator";
 import {CatServer} from "./CatServer";
 import {DIContainer} from "./src/core/container/DIContainer";
 import {SessionHandler} from "./src/interface/middleware/handler/SessionHandler";
-import {ExceptionHandler} from "./src/interface/middleware/handler/ExceptionHandler";
+import {ErrorHandler} from "./src/interface/middleware/handler/ErrorHandler";
 import {Router} from "./src/interface/router/Router";
 
 dotenv.config();
@@ -16,7 +16,7 @@ class Application {
     constructor(private readonly server: CatServer,
                 private readonly router: Router,
                 private readonly sessionHandler: SessionHandler,
-                private readonly exceptionHandler: ExceptionHandler) {
+                private readonly exceptionHandler: ErrorHandler) {
     }
 
     async start() {

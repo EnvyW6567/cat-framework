@@ -1,8 +1,8 @@
 import fs from "fs/promises";
 import {HttpRequest} from "../http/HttpRequest";
 import {HttpResponse} from "../http/HttpResponse";
-import {HttpException} from "../http/exception/HttpException";
-import {HttpExceptionType} from "../http/exception/HttpExceptionType";
+import {HttpError} from "../http/error/HttpError";
+import {HttpErrorType} from "../http/error/HttpErrorType";
 import {HttpMethodType} from "../http/type/HttpMethod.type";
 import {Injectable} from "../../core/decorator/class/Injectable.decorator";
 import {HTTP_CONTENT_TYPE} from "../http/type/HttpContentType.type";
@@ -72,7 +72,7 @@ export class Router implements Middleware {
 
     private validateRouter(method: HttpMethodType, url: string) {
         if (!this.routers[method]?.[url]) {
-            throw new HttpException(HttpExceptionType.NOT_FOUND);
+            throw new HttpError(HttpErrorType.NOT_FOUND);
         }
     }
 }

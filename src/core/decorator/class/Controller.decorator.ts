@@ -1,15 +1,15 @@
 import {DIContainer} from "../../container/DIContainer";
 import {RouteDefinition} from "../../../interface/router/RouteDefinition.type";
 import {Router} from "../../../interface/router/Router";
-import {BaseException} from "../../exception/BaseException";
+import {BaseError} from "../../error/BaseError";
 import {HttpResponse} from "../../../interface/http/HttpResponse";
 import {HttpRequest} from "../../../interface/http/HttpRequest";
 import {HttpResponseDto} from "../../../interface/http/HttpResponse.dto";
 import {REQUEST_BODY_KEY} from "../param/RequestBody.decorator";
-import {REQUEST_PARAM_KEY} from "../param/ReqeustParam.decorator";
+import {REQUEST_PARAM_KEY} from "../param/RequestParam.decorator";
 import {plainToInstance} from "class-transformer";
 import {validate} from "class-validator";
-import {BaseExceptionType} from "../../exception/BaseExceptionType";
+import {BaseError} from "../../error/BaseErrorType";
 import {AUTHENTICATION_KEY} from "../param/Authenticated.decorator";
 import {MULTIPART_KEY} from "../param/Multipart.decorator";
 
@@ -100,7 +100,7 @@ async function validateParams(requestParams: number[], paramTypes: any[], value:
             const errors = await validate(dto);
 
             if (errors.length > 0) {
-                throw new BaseException(BaseExceptionType.BAD_REQUEST_PARAM);
+                throw new BaseError(BaseError.BAD_REQUEST_PARAM);
             }
             return {index, value: dto};
         }
@@ -110,10 +110,10 @@ async function validateParams(requestParams: number[], paramTypes: any[], value:
     try {
         return await Promise.all(validationPromises);
     } catch (error) {
-        if (error instanceof BaseException) {
+        if (error instanceof BaseError) {
             throw error;
         }
-        throw new BaseException(BaseExceptionType.VALIDATION_ERROR);
+        throw new BaseError(BaseError.VALIDATION_ERROR);
     }
 }
 

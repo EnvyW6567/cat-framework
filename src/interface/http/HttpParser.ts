@@ -1,6 +1,6 @@
 import {HttpMethodType, isHttpMethodType} from "./type/HttpMethod.type";
-import {HttpException} from "./exception/HttpException";
-import {HttpExceptionType} from "./exception/HttpExceptionType";
+import {HttpError} from "./error/HttpError";
+import {HttpErrorType} from "./error/HttpErrorType";
 import {HttpVersionType, isHttpVersionType} from "./type/HttpVersion.type";
 import {Injectable} from "../../core/decorator/class/Injectable.decorator";
 import {CRLF} from "./constants/constants";
@@ -62,7 +62,7 @@ export class HttpParser {
         const startLineTokens = startLineStr.split(" ");
 
         if (startLineTokens.length !== 3) {
-            throw new HttpException(HttpExceptionType.INVALID_HTTP_STARTLINE);
+            throw new HttpError(HttpErrorType.INVALID_HTTP_STARTLINE);
         }
         const [method, url, version] = startLineTokens;
 

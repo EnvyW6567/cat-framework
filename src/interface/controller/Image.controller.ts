@@ -4,7 +4,7 @@ import {Multipart} from "../../core/decorator/param/Multipart.decorator";
 import {MultipartType} from "../http/HttpParser";
 import {HttpResponseDto} from "../http/HttpResponse.dto";
 import {Controller} from "../../core/decorator/class/Controller.decorator";
-import {RequestParam} from "../../core/decorator/param/ReqeustParam.decorator";
+import {RequestParam} from "../../core/decorator/param/RequestParam.decorator";
 import {UploadImageReqDto} from "./dto/request/UploadImageReq.dto";
 
 @Controller("/api/image")

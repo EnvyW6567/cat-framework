@@ -1,11 +1,11 @@
-import {logger} from "../logger/logger";
+import {logger} from "../logger/Logger";
 
-export class BaseException extends Error {
+export class BaseError extends Error {
 
     private readonly code: number;
     private readonly exceptionType: string;
 
-    constructor(exceptionType: ExceptionType) {
+    constructor(exceptionType: ErrorType) {
         super(exceptionType.message);
 
         this.code = exceptionType.code;

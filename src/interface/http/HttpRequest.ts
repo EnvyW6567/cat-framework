@@ -1,10 +1,10 @@
 import {HttpRequestData, MultipartType} from "./HttpParser";
-import {logger} from "../../core/logger/logger";
+import {logger} from "../../core/logger/Logger";
 import path from "path";
 import {HttpContentTypeExt, isHttpContentTypeExt} from "./type/HttpContentType.type";
 import {HttpMethodType} from "./type/HttpMethod.type";
-import {HttpExceptionType} from "./exception/HttpExceptionType";
-import {HttpException} from "./exception/HttpException";
+import {HttpErrorType} from "./error/HttpErrorType";
+import {HttpError} from "./error/HttpError";
 
 export class HttpRequest {
 
@@ -39,7 +39,7 @@ export class HttpRequest {
         if(isHttpContentTypeExt(ext)) {
             return ext;
         }
-        throw new HttpException(HttpExceptionType.NOT_SUPPORT_EXTENSION);
+        throw new HttpError(HttpErrorType.NOT_SUPPORT_EXTENSION);
     }
 
     public setAuthenticated(userId: number) {
@@ -48,7 +48,7 @@ export class HttpRequest {
 
     public getAuthenticated() {
         if (!this.authenticated) {
-            throw new HttpException(HttpExceptionType.AUTHENTICATED_FAILED);
+            throw new HttpError(HttpErrorType.AUTHENTICATED_FAILED);
         }
 
         return this.authenticated;

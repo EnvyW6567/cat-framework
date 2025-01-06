@@ -8,8 +8,8 @@ import {
     MULTIPART_FORM_DATA
 } from "./constants/constants";
 import {HeadersType, HttpRequestData, HttpParser, MultipartType} from "./HttpParser";
-import {HttpException} from "./exception/HttpException";
-import {HttpExceptionType} from "./exception/HttpExceptionType";
+import {HttpError} from "./error/HttpError";
+import {HttpErrorType} from "./error/HttpErrorType";
 import {validateHttpContentType} from "./type/HttpContentType.type";
 
 export class HttpRequestHandler {
@@ -49,7 +49,7 @@ export class HttpRequestHandler {
         if (this.httpRequestData) {
             return this.httpRequestData;
         }
-        throw new HttpException(HttpExceptionType.NOT_FOUND_REQUEST);
+        throw new HttpError(HttpErrorType.NOT_FOUND_REQUEST);
     }
 
     private resolveHeader() {
@@ -122,7 +122,7 @@ export class HttpRequestHandler {
             if (validateHttpContentType(contentType) && filename) return {filename, contentType};
         }
 
-        throw new HttpException(HttpExceptionType.INVALID_FILE_TYPE);
+        throw new HttpError(HttpErrorType.INVALID_FILE_TYPE);
     }
 
     private resolveJsonBody() {
@@ -139,7 +139,7 @@ export class HttpRequestHandler {
         try {
             return JSON.parse(data.toString());
         } catch (e) {
-            throw new HttpException(HttpExceptionType.INVALID_JSON_TYPE);
+            throw new HttpError(HttpErrorType.INVALID_JSON_TYPE);
         }
     }
 

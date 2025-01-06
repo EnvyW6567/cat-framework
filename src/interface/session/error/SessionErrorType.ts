@@ -1,4 +1,4 @@
-export const SessionExceptionType = {
+export const SessionErrorType = {
     INVALID_SESSION_ID: {
         name: "INVALID_SESSION_ID",
         code: 401,

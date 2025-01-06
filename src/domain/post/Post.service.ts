@@ -11,7 +11,6 @@ import {PostEntity} from "./Post.entity";
 import {UserEntity} from "../user/User.entity";
 import {PostException} from "./exception/PostException";
 import {PostExceptionType} from "./exception/PostExceptionType";
-import {FileRepository} from "../file/File.repository";
 
 @Service()
 export class PostService {

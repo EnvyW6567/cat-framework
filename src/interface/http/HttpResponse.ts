@@ -1,6 +1,6 @@
 import net from "node:net";
 import {HTTP_STATUS, HttpStatusType} from "./type/HttpStatus.type";
-import {HTTP_CONTENT_TYPE, HttpContentTypeExt, HttpContentTypeType} from "./type/HttpContentType.type";
+import {HTTP_CONTENT_TYPE, HttpContentTypeType} from "./type/HttpContentType.type";
 import {SetCookieType} from "./type/SetCookie.type";
 import {HeaderType} from "./HttpResponse.dto";
 import {CRLF} from "./constants/constants";

@@ -1,7 +1,7 @@
 import {HttpRequestData, MultipartType} from "./HttpParser";
 import {logger} from "../../core/logger/logger";
 import path from "path";
-import {HTTP_CONTENT_TYPE, HttpContentTypeExt, isHttpContentTypeExt} from "./type/HttpContentType.type";
+import {HttpContentTypeExt, isHttpContentTypeExt} from "./type/HttpContentType.type";
 import {HttpMethodType} from "./type/HttpMethod.type";
 import {HttpExceptionType} from "./exception/HttpExceptionType";
 import {HttpException} from "./exception/HttpException";

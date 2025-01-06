@@ -6,7 +6,9 @@
   "scripts": {
     "start": "ts-node app.ts",
     "build": "ts-node generateDependencies.ts",
-    "test": "jest"
+    "test": "jest",
+    "format": "prettier --write \"src/**/*.{js,ts}\"",
+    "format:check": "prettier --check \"src/**/*.{js,ts}\""
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,7 @@
     "@types/uuid": "^10.0.0",
     "babel-jest": "^29.7.0",
     "mysql2": "^3.11.0",
+    "prettier": "^3.4.2",
     "ts-jest": "^29.2.5",
     "typescript": "^5.6.2"
   },

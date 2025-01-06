@@ -43,6 +43,5 @@ const logoutButtonHandler = () => {
 }
 
 const logoHandler = () => {
-    console.log("???"); //TODO: delete
     location.assign("http://localhost:3000/");
 }

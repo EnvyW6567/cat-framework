@@ -7,7 +7,7 @@ import {
     CRLF,
     MULTIPART_FORM_DATA,
 } from './constants/constants';
-import { HeadersType, HttpRequestData, HttpParser, MultipartType } from './HttpParser';
+import { HeadersType, HttpParser, HttpRequestData, MultipartType } from './HttpParser';
 import { HttpError } from './error/HttpError';
 import { HttpErrorType } from './error/HttpErrorType';
 import { validateHttpContentType } from './type/HttpContentType.type';
@@ -29,7 +29,8 @@ export class HttpRequestHandler {
 
         if (!this.headers) {
             this.resolveHeader();
-        } else {
+        }
+        if (this.headers) {
             if (this.contentLength === 0) {
                 return true;
             }

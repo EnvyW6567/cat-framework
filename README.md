@@ -19,7 +19,7 @@ Node.js의 기본 `http` 모듈을 사용하지 않고, **저수준 TCP 통신 �
 
 
 - `interface/http/HttpRequest.ts`
-```typescript
+``` typescript
 export class HttpRequest {
     readonly method: HttpMethodType;
     readonly url: string;
@@ -79,7 +79,7 @@ HTTP 요청을 처리하기 전에 **미들웨어를 등록하여 전처리 과�
 
 ### ✅ 미들웨어 등록 방식
 - `main.ts`에서 체이닝을 통해 미들웨어를 순차적으로 등록할 수 있습니다.
-```typescript
+``` typescript
 this.server  
     .use(this.sessionHandler)  
     .use(this.router)  
@@ -87,7 +87,7 @@ this.server
 ```
 
 - **커스텀 미들웨어 등록**은 `Middleware` 인터페이스를 상속받아야 합니다.
-```typescript
+``` typescript
 export interface Middleware {
     handle(req: HttpRequest, res: HttpResponse, next: Function, err?: Error): Promise<void>;
 }
@@ -102,7 +102,7 @@ export interface Middleware {
 Cat Framework의 라우터는 **URL과 HTTP 메서드를 매핑하여 적절한 비즈니스 로직을 실행**하는 역할을 합니다.
 
 - `Router.ts`
-```typescript
+``` typescript
 @Injectable()
 export class Router implements Middleware {
     private static readonly instance: Router | undefined;
@@ -131,7 +131,7 @@ Cat Framework는 **의존성 주입(DI, Dependency Injection) 컨테이너를 �
 - 빌드 타임에 `@Injectable`, `@Service`, `@Controller` 등의 클래스를 자동으로 탐색하여 DI 컨테이너에 등록합니다.
 
 - `DIContainer.ts`
-```typescript
+``` typescript
 export class DIContainer {
     private static instance: DIContainer;
     private constructors: Map<string, any> = new Map();
@@ -175,7 +175,7 @@ Cat Framework는 **의존성 주입 및 HTTP 요청 처리를 위한 다양한 �
 - `@RequestBody`, `@RequestParam`, `@Multipart` → **요청 데이터 매핑**
 
 - `Injectable.decorator.ts`
-```typescript
+``` typescript
 function createInjectableDecorator(type: InjectableType) {
     return function (name?: string): ClassDecorator {
         return function (target: any) {
@@ -189,7 +189,7 @@ function createInjectableDecorator(type: InjectableType) {
 ```
 
 - `Controller.decorator.ts`
-```typescript
+``` typescript
 export function Controller(basePath: string = ''): ClassDecorator {
     return function (target: any) {
         const router = DIContainer.getInstance().resolve<Router>('Router');

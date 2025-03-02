@@ -152,10 +152,10 @@ export class Router implements Middleware {
 
 Cat 프레임워크는 의존성 주입 컨테이너를 지원하며 이로 인해 `제어 역전`을 실현합니다.
 
-#### Cat 프레임워크는 실행 전 반드시 빌드과정이 필요합니다
-Cat 프레임워크는 Nest.js와 달리 별도의 모듈 파일을 생성하지 않고 의존성 주입 컨테이너를 관리합니다. 이는 Java의 JavaBean과 같은 동작을 구현하기 위한 독자적(사전 빌드가 필수인 이유)인 방식입니다.
+#### ⚠️ Cat 프레임워크는 실행 전 반드시 빌드과정이 필요합니다.
+Nest.js와 달리 별도의 모듈 파일을 생성하지 않고 의존성 주입 컨테이너를 관리합니다. 이는 Java의 JavaBean과 같은 동작을 구현하기 위한 독자적(사전 빌드가 필수인 이유)인 방식입니다.
 
-빌드 타임에 `src/` 디렉토리 내 파일을 읽어 `@Injectable` , `@Service` , `@Controller` 와 같은 의존성 주입 클래스를 구분해 런타임 초기화 환경에서 `import`하는 역할을 합니다. 
+빌드 타임에 `src/` 디렉토리 내 파일을 읽어 `@Injectable` , `@Service` , `@Controller` 와 같은 의존성 주입 클래스를 구분해 런타임 초기화 환경에서 `import`하는 역할을 합니다. 의존성 클래스는 재귀적으로 필요한 의존성 클래스를 탐색하며 의존성 주입 컨테이너에 객체로 등록합니다.
 ** `generateDependencies.ts` 파일 참조
 
 - `src/core/container/DIContainer.ts`

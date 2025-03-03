@@ -1,4 +1,7 @@
-# 🐱 Cat Framework
+# Cat Framework
+
+
+<img src="https://github.com/user-attachments/assets/704142da-eb93-4662-8ee7-c2f82c79ef81" style="width: 120px; height: 120px">
 
 ![Node.js Version](https://img.shields.io/badge/Node.js-22.11.0-green?logo=node.js)
 

@@ -44,15 +44,12 @@ export class CatServer {
 
             socket.on('data', async (chunk: Buffer) => {
                 try {
-                    console.log(chunk.toString()); // TODO: 삭제
                     if (!httpRequestHandler.handleData(chunk)) return;
 
                     const httpRequestData = httpRequestHandler.getHttpRequestData();
-                    console.log('????????????????'); // TODO: 삭제
                     const res = new HttpResponse(socket);
                     const req = new HttpRequest(httpRequestData);
 
-                    console.log(req); // TODO: 삭제
                     res.setContentType(HTTP_CONTENT_TYPE[req.ext]);
 
                     const middlewareIterator = this.middlewareChain.createIterator(req, res);

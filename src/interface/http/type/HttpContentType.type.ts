@@ -6,6 +6,7 @@ export const HTTP_CONTENT_TYPE = {
     '.png': 'image/png',
     '.jpg': 'image/jpeg',
     '.svg': 'image/svg+xml',
+    '.pdf': 'application/pdf',
     '': 'application/json',
     json: 'application/json',
 } as const;
@@ -19,6 +20,7 @@ export const CONTENT_TYPE_PATH: Record<HttpContentTypeType, string> = {
     'image/png': '/png',
     'image/jpeg': '/jpeg',
     'image/svg+xml': '/png',
+    'application/pdf': '/pdf',
 };
 
 export type HttpContentTypeExt = keyof typeof HTTP_CONTENT_TYPE;

@@ -260,11 +260,12 @@ section h2 {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
 }
 
 #about .about-image {
     flex: 1;
-    min-width: 250px;
+    max-width: 250px;
     margin-right: 20px;
 }
 
@@ -309,6 +310,22 @@ section h2 {
 
 #about .about-text-text {
     font-size: var(--font-size-small);
+}
+
+@media (max-width: 1149px) {
+    #about .about-content {
+        justify-content: center;
+    }
+    #about .about-row {
+        margin-top: 16px;
+        justify-content: space-between;
+    }
+    #about .about-col {
+        margin-left: 40px;
+    }
+    #about .about-text {
+        min-width: 0;
+    }
 }
 
 /* 기술 스택 섹션 */

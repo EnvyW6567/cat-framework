@@ -16,6 +16,7 @@ import { MULTIPART_KEY } from '../param/Multipart.decorator';
 export function Controller(basePath: string = ''): ClassDecorator {
     return function (target: any) {
         const router = DIContainer.getInstance().resolve<Router>('Router');
+
         if (!router) throw new Error('Router is not registered in DIContainer');
 
         Reflect.defineMetadata('isController', true, target);

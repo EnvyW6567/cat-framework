@@ -1,0 +1,699 @@
+/* styles.css */
+
+@import url('foundation.css');
+
+body {
+    z-index: -1000;
+}
+
+/* 헤더 기본 스타일 (투명 배경) */
+header {
+    background-color: transparent; /* 기본적으로 투명 */
+    color: var(--color-light); /* 기본 텍스트 색상 */
+    position: fixed;
+    padding: 0 16px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+header.scrolled {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--header-bg-color); /* 스크롤 시 배경색 */
+    color: var(--header-text-color); /* 스크롤 시 텍스트 색상 */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+header h1 {
+    font-size: var(--font-size-large);
+    margin: 0;
+    color: inherit; /* 부모의 색상 상속 */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: inherit; /* 부모의 색상 상속 */
+    font-weight: var(--font-weight-bold);
+}
+
+section h2 {
+    font-size: var(--font-size-xlarge);
+}
+
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    right: 16px;
+}
+
+.nav-toggle span {
+    width: 25px;
+    height: 3px;
+    background: currentColor; /* 현재 텍스트 색상 사용 */
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+/* 모바일 네비게이션 */
+@media (max-width: 768px) {
+    nav ul {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: center;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height var(--transition-speed) ease;
+    }
+
+    nav ul.active {
+        max-height: 300px;
+    }
+
+    nav ul li {
+        margin: 15px 0;
+    }
+
+    .nav-toggle {
+        display: flex;
+        position: absolute;
+    }
+
+    ul.active {
+        background-color: rgba(255, 255, 255, 0.5);
+        color: var(--color-text)
+    }
+
+    ul.active.scrolled {
+        background-color: var(--color-background);
+    }
+
+    ul.active li {
+        width: 100%;
+        height: 100%;
+    }
+
+    ul.active li a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+
+}
+
+/* 히어로 섹션 */
+.hero {
+    height: 100vh;
+    background: url('https://c.pxhere.com/photos/d8/12/notebook_laptop_pc_pen_notes_code_programming_cafe-865584.jpg!d') center center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+    position: relative;
+    color: var(--color-light);
+    text-align: center;
+    z-index: 999;
+}
+
+.hero-content h2 {
+    color: var(--color-light-grey);
+    font-size: var(--font-size-xlarge);
+}
+
+.hero-content h1 {
+    color: var(--color-light);
+    font-size: var(--font-size-xxlarge);
+    font-weight: var(--font-weight-black);
+    margin-bottom: 30px;
+}
+
+.hero-content span {
+    position: absolute;
+    margin-left: 5px;
+    top: 90px;
+    color: var(--color-light-grey);
+    font-size: var(--font-size-small);
+}
+
+.hero-content p {
+    margin-bottom: 10px;
+}
+
+.hero-content a {
+    padding: 12px 30px;
+    background: var(--color-primary);
+    border-radius: 5px;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-light);
+    transition: background var(--transition-speed);
+}
+
+.hero-content a:hover {
+    cursor: pointer;
+    background: var(--color-accent);
+}
+
+#cat-server {
+    padding: 40px 10%;
+    background: var(--color-light);
+}
+
+#cat-server h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#cat-server .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#cat-server .explanation {
+    text-align: center;
+}
+
+#cat-server .explanation > h3 {
+    font-size: var(--font-size-large);
+    color: var(--color-text);
+    margin-bottom: 10px;
+}
+
+#cat-server h3 > span {
+    color: var(--color-primary)
+}
+
+#cat-server .explanation > p {
+    font-size: var(--font-size-base);
+    color: var(--color-text-medium-grey);
+    font-weight: var(--font-weight-bold);
+}
+
+#cat-server .logo {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#cat-server .project-item {
+    width: 50%;
+}
+
+
+/* 소개 섹션 */
+#about {
+    padding: 40px 10%;
+}
+
+#about h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#about .about-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#about .about-image {
+    flex: 1;
+    min-width: 250px;
+    margin-right: 20px;
+}
+
+#about .about-image img {
+    width: 250px;
+    border-radius: 50%;
+}
+
+#about .about-row {
+    display: flex;
+    flex-direction: row;
+}
+
+#about .about-col {
+    display: flex;
+    flex-direction: column;
+}
+
+#about .about-col > div {
+    display: flex;
+    flex-direction: row;
+}
+
+#about .about-col img {
+    width: 36px;
+    height: 36px;
+    margin-right: 18px;
+    margin-top: 8px;
+}
+
+#about .about-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 250px;
+    margin-bottom: 30px;
+}
+
+#about .about-text-title {
+    font-weight: var(--font-weight-bold);
+    margin-bottom: 6px;
+}
+
+#about .about-text-text {
+    font-size: var(--font-size-small);
+}
+
+/* 기술 스택 섹션 */
+#skills {
+    padding: 60px 0;
+    background: var(--color-light);
+}
+
+#skills h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: var(--font-weight-black);
+}
+
+#skills .container {
+    padding: 0 40px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 2fr); /* 3개의 컬럼 생성 */
+    grid-auto-rows: auto; /* 행 높이 자동 조정 */
+    gap: 20px; /* 아이템 간 간격 */
+}
+
+/* 첫 번째 행에 2개의 아이템을 배치하기 위해 첫 번째 아이템을 2 컬럼 span */
+.skills-grid :nth-child(1) {
+    grid-column: span 2; /* 첫 번째 아이템은 2개의 컬럼을 차지 */
+}
+
+.skills-grid :nth-child(2) {
+    grid-column: span 3; /* 두 번째 아이템은 3번째 컬럼에 위치 */
+}
+
+.skills-grid :nth-child(3) {
+    grid-column: span 2; /* 세 번째 아이템은 첫 번째 컬럼에 위치 */
+}
+
+.skills-grid :nth-child(4) {
+    grid-column: span 4; /* 네 번째 아이템은 두 번째 컬럼에 위치 */
+}
+
+.skills-grid :nth-child(5) {
+    grid-column: span 3; /* 다섯 번째 아이템은 세 번째 컬럼에 위치 */
+}
+
+.skill-category {
+    margin-bottom: 40px;
+    padding: 30px 20px;
+    border-radius: 5px;
+    background-color: var(--color-background);
+}
+
+.skill-category h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-dark);
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    position: relative;
+}
+
+.skill-item i,
+.skill-item svg,
+.skill-item img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+    transition: transform var(--transition-speed);
+}
+
+.skill-item i::before {
+    font-size: 60px;
+}
+
+.skill-item p {
+    text-align: center;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-regular);
+}
+
+.skill-item:hover i,
+.skill-item:hover img {
+    transform: scale(1.2);
+}
+
+/* 툴팁 스타일 */
+.skill-item p {
+    visibility: hidden;
+    opacity: 0;
+    width: max-content;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity var(--transition-speed);
+    white-space: nowrap;
+    z-index: 1;
+}
+
+/*.skill-item::after {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    top: 100%;*/
+/*    left: 50%;*/
+/*    transform: translateX(-50%);*/
+/*    border-width: 5px;*/
+/*    border-style: solid;*/
+/*    border-color: var(--color-dark) transparent transparent transparent;*/
+/*}*/
+
+.skill-item:hover p {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .skill-item {
+        width: 80px;
+    }
+
+    .skill-item i,
+    .skill-item svg {
+        width: 50px;
+        height: 50px;
+    }
+
+    .skill-category h3 {
+        font-size: var(--font-size-base);
+    }
+
+    #skills h2 {
+        font-size: var(--font-size-large);
+    }
+}
+
+
+/* 프로젝트 섹션 */
+#projects {
+    padding: 40px 5%;
+}
+
+#projects h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#projects .container {
+    padding: 0 40px;
+}
+
+.project-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.project-item {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--color-background);
+    border: var(--border-normal);
+    border-radius: 10px;
+    width: 40%;
+    margin: 15px;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    cursor: pointer;
+}
+
+.project-item::after {
+    content: ''; /* 표시할 텍스트 */
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    transform: translate(-50%, -50%) scale(0.8);
+    background-color: rgba(0, 0, 0, 0.1); /* 반투명 검은색 배경 */
+    color: #fff; /* 흰색 텍스트 */
+    padding: 10px 20px;
+    border-radius: 5px;
+    opacity: 0; /* 초기 상태는 숨김 */
+    transition: all 0.3s ease; /* 부드러운 전환 효과 */
+    pointer-events: none; /* 오버레이가 마우스 이벤트를 방해하지 않도록 설정 */
+}
+
+.project-item:hover::after {
+    opacity: 1; /* 호버 시 보이도록 설정 */
+    transform: translate(-50%, -50%) scale(1); /* 확대 애니메이션 */
+}
+
+
+.project-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.project-item img {
+    margin: auto;
+    max-height: 200px;
+    max-width: 100%;
+    padding: 16px;
+    object-fit: cover;
+    transition: transform var(--transition-speed) ease;
+}
+
+.project-item .project-info {
+    border-top: var(--border-normal);
+    padding: 15px 20px;
+}
+
+.project-item .project-info h3 {
+    margin-bottom: 10px;
+}
+
+.project-item .project-info p {
+    font-size: var(--font-size-small);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-medium-grey);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .project-list {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .project-item {
+        width: 80%;
+        min-height: 300px;
+    }
+}
+
+
+/* 연락처 섹션 */
+#contact {
+    background: var(--color-light);
+    padding: 40px 0;
+}
+
+#contact h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#contact .contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#contact .contact-info p {
+    margin: 10px 0;
+    font-size: var(--font-size-base);
+}
+
+/* 모달 스타일 */
+/* 모달 스타일 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* 모달 내부 */
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    background-color: white;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+.modal img {
+    width: 60px;
+    height: 60px;
+    opacity: 0.2;
+}
+
+.modal img:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.pdf-btn {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+#pdf-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 999;
+}
+
+#pdf-close > img {
+    height: 20px;
+    width: 20px;
+}
+
+#pdf-next {
+    top: 0;
+    right: 0;
+    justify-content: end;
+}
+
+#pdf-prev {
+    top:0;
+    right: 50%;
+    justify-content: start;
+}
+
+.link-container {
+    position: absolute;
+    top: 10%;
+    right: 3%;
+}
+
+.link-container img {
+    opacity: 1;
+}
+
+.link-container > div {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-color: var(--color-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* PDF Canvas */
+canvas {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* 푸터 스타일 */
+footer {
+    background: var(--color-dark);
+    color: var(--color-light);
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    font-size: var(--font-size-small);
+}

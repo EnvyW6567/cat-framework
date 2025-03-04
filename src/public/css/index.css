@@ -2,12 +2,18 @@
 
 @import url('foundation.css');
 
+html, body {
+    width: 100%;
+    overflow-x: hidden;  /* 가로 스크롤 방지 */
+}
+
 body {
     z-index: -1000;
 }
 
 /* 헤더 기본 스타일 (투명 배경) */
 header {
+    overflow: hidden;
     background-color: transparent; /* 기본적으로 투명 */
     color: var(--color-light); /* 기본 텍스트 색상 */
     position: fixed;
@@ -50,6 +56,10 @@ nav ul li {
 nav ul li a {
     color: inherit; /* 부모의 색상 상속 */
     font-weight: var(--font-weight-bold);
+}
+
+section {
+    width: 100%;
 }
 
 section h2 {
@@ -231,7 +241,8 @@ section h2 {
 }
 
 #cat-server .project-item {
-    width: 50%;
+    width: 100%;
+    max-width: 450px;
 }
 
 

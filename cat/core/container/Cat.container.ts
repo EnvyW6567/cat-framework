@@ -1,6 +1,3 @@
-import {Injectable} from "../decorator/class/Injectable.decorator";
-
-@Injectable()
 export class CatContainer {
     private static instance: CatContainer
 

@@ -46,7 +46,8 @@ describe('Router 테스트', () => {
     }
 
     const testStaticFile = async (url: string, ext: HttpContentTypeExt, expectedPath: string) => {
-        const mockFileContent = 'mock file content'
+        const mockFileContent = 'mock file content' as string
+
         (fs.readFile as jest.Mock).mockResolvedValue(mockFileContent)
 
         const mockRequest = createMockRequest('GET', url, ext)

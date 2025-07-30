@@ -14,8 +14,8 @@ body {
 /* 헤더 기본 스타일 (투명 배경) */
 header {
     overflow: hidden;
-    background-color: transparent; /* 기본적으로 투명 */
-    color: var(--color-light); /* 기본 텍스트 색상 */
+    background-color: transparent;
+    color: var(--color-light);
     position: fixed;
     padding: 0 16px;
     width: 100%;

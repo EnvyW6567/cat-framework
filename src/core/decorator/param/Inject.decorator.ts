@@ -4,9 +4,9 @@ export function Inject(token: string): ParameterDecorator {
         propertyKey: string | symbol | undefined,
         parameterIndex: number,
     ) {
-        const existingInjectionTokens = Reflect.getMetadata('custom:paramtypes', target) || [];
+        const existingInjectionTokens = Reflect.getMetadata('custom:paramtypes', target) || []
 
-        existingInjectionTokens[parameterIndex] = token;
-        Reflect.defineMetadata('custom:paramtypes', existingInjectionTokens, target);
-    };
+        existingInjectionTokens[parameterIndex] = token
+        Reflect.defineMetadata('custom:paramtypes', existingInjectionTokens, target)
+    }
 }

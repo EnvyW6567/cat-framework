@@ -9,7 +9,7 @@ export const HTTP_CONTENT_TYPE = {
     '.pdf': 'application/pdf',
     '': 'application/json',
     json: 'application/json',
-} as const;
+} as const
 
 export const CONTENT_TYPE_PATH: Record<HttpContentTypeType, string> = {
     'application/javascript': '',
@@ -21,17 +21,17 @@ export const CONTENT_TYPE_PATH: Record<HttpContentTypeType, string> = {
     'image/jpeg': '/jpeg',
     'image/svg+xml': '/png',
     'application/pdf': '/pdf',
-};
+}
 
-export type HttpContentTypeExt = keyof typeof HTTP_CONTENT_TYPE;
-export type HttpContentTypeType = (typeof HTTP_CONTENT_TYPE)[HttpContentTypeExt];
+export type HttpContentTypeExt = keyof typeof HTTP_CONTENT_TYPE
+export type HttpContentTypeType = (typeof HTTP_CONTENT_TYPE)[HttpContentTypeExt]
 
-export const VALID_HTTP_Content_Type = new Set(Object.values(HTTP_CONTENT_TYPE));
+export const VALID_HTTP_Content_Type = new Set(Object.values(HTTP_CONTENT_TYPE))
 
 export function isHttpContentTypeExt(ext: string): ext is HttpContentTypeExt {
-    return ext in HTTP_CONTENT_TYPE;
+    return ext in HTTP_CONTENT_TYPE
 }
 
 export function validateHttpContentType(contentType: string): contentType is HttpContentTypeType {
-    return VALID_HTTP_Content_Type.has(contentType as HttpContentTypeType);
+    return VALID_HTTP_Content_Type.has(contentType as HttpContentTypeType)
 }

@@ -1,15 +1,15 @@
-import {describe, test, expect, beforeEach} from "@jest/globals";
-import {HttpParser} from "../../../src/interface/http/HttpParser";
-import {HttpError} from "../../../src/interface/http/error/HttpError";
-import {BaseError} from "../../../src/core/error/BaseError";
-import {HttpErrorType} from "../../../src/interface/http/error/HttpErrorType";
+import {describe, test, expect, beforeEach} from "@jest/globals"
+import {HttpParser} from "../../../src/interface/http/HttpParser"
+import {HttpError} from "../../../src/interface/http/error/HttpError"
+import {BaseError} from "../../../src/core/error/BaseError"
+import {HttpErrorType} from "../../../src/interface/http/error/HttpErrorType"
 
 describe('HttpParser 테스트', () => {
-    let httpParser: HttpParser;
+    let httpParser: HttpParser
 
     beforeEach(() => {
-        httpParser = new HttpParser();
-    });
+        httpParser = new HttpParser()
+    })
 
     const validRequests = [
         {
@@ -76,12 +76,12 @@ describe('HttpParser 테스트', () => {
                 "version": "HTTP/1.1"
             }
         }
-    ];
+    ]
 
     test.each(validRequests)('$name 파싱 테스트', ({request, expected}) => {
-        const result = httpParser.parse(request);
-        expect(result).toEqual(expected);
-    });
+        const result = httpParser.parse(request)
+        expect(result).toEqual(expected)
+    })
 
     const invalidRequests = [
         {
@@ -103,19 +103,19 @@ describe('HttpParser 테스트', () => {
             exceptionType: HttpErrorType.INVALID_HTTP_VERSION.name
         },
 
-    ];
+    ]
 
     test.each(invalidRequests)('$name 테스트', ({request, exceptionClass: errorClass, exceptionType: errorType}) => {
         expect(() => {
             try {
-                httpParser.parse(request);
+                httpParser.parse(request)
             } catch(error) {
                 if (error instanceof BaseError) {
-                    expect(error.getErrorType()).toEqual(errorType);
-                    throw error;
+                    expect(error.getErrorType()).toEqual(errorType)
+                    throw error
                 }
-                throw new Error();
+                throw new Error()
             }
-        }).toThrow(errorClass);
-    });
-});
+        }).toThrow(errorClass)
+    })
+})

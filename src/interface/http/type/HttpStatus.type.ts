@@ -69,7 +69,7 @@ export const HTTP_STATUS = {
     508: 'Loop Detected',
     510: 'Not Extended',
     511: 'Network Authentication Required',
-} as const;
+} as const
 
-export type HttpStatusType = keyof typeof HTTP_STATUS;
-export type HttpStatusDescription = (typeof HTTP_STATUS)[HttpStatusType];
+export type HttpStatusType = keyof typeof HTTP_STATUS
+export type HttpStatusDescription = (typeof HTTP_STATUS)[HttpStatusType]

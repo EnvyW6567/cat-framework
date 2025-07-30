@@ -49,4 +49,4 @@ export const HttpErrorType = {
         code: 400,
         message: 'request not found',
     },
-} as const;
+} as const

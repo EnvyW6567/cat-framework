@@ -14,4 +14,4 @@ export const SessionErrorType = {
         code: 400,
         message: 'not found session',
     },
-} as const;
+} as const

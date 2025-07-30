@@ -9,4 +9,4 @@ export const BaseErrorType = {
         message: 'An error occurred during validation',
         code: 500,
     },
-};
+}

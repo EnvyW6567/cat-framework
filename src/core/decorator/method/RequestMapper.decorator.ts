@@ -1,20 +1,20 @@
-import { RouteDefinition } from '../../../interface/router/RouteDefinition.type';
-import { HttpMethodType } from '../../../interface/http/type/HttpMethod.type';
+import { RouteDefinition } from '../../../interface/router/RouteDefinition.type'
+import { HttpMethodType } from '../../../interface/http/type/HttpMethod.type'
 
 export function GetMapping(path: string) {
     return function (target: any, propertyKey: string | symbol, descriptor: PropertyDescriptor) {
-        defineRouteMetadata(target, propertyKey, path, 'GET');
+        defineRouteMetadata(target, propertyKey, path, 'GET')
 
-        return descriptor;
-    };
+        return descriptor
+    }
 }
 
 export function PostMapping(path: string) {
     return function (target: any, propertyKey: string | symbol, descriptor: PropertyDescriptor) {
-        defineRouteMetadata(target, propertyKey, path, 'POST');
+        defineRouteMetadata(target, propertyKey, path, 'POST')
 
-        return descriptor;
-    };
+        return descriptor
+    }
 }
 
 function defineRouteMetadata(
@@ -24,16 +24,16 @@ function defineRouteMetadata(
     method: HttpMethodType,
 ) {
     if (!Reflect.hasMetadata('routes', target.constructor)) {
-        Reflect.defineMetadata('routes', [], target.constructor);
+        Reflect.defineMetadata('routes', [], target.constructor)
     }
 
-    const routes = Reflect.getMetadata('routes', target.constructor) as RouteDefinition[];
+    const routes = Reflect.getMetadata('routes', target.constructor) as RouteDefinition[]
 
     routes.push({
         path,
         method,
         handlerName: propertyKey,
-    });
+    })
 
-    Reflect.defineMetadata('routes', routes, target.constructor);
+    Reflect.defineMetadata('routes', routes, target.constructor)
 }

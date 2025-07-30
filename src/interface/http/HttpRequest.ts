@@ -1,55 +1,55 @@
-import { HttpRequestData, MultipartType } from './HttpParser';
-import { logger } from '../../core/logger/Logger';
-import path from 'path';
-import { HttpContentTypeExt, isHttpContentTypeExt } from './type/HttpContentType.type';
-import { HttpMethodType } from './type/HttpMethod.type';
-import { HttpErrorType } from './error/HttpErrorType';
-import { HttpError } from './error/HttpError';
+import { HttpRequestData, MultipartType } from './HttpParser'
+import { logger } from '../../core/logger/Logger'
+import path from 'path'
+import { HttpContentTypeExt, isHttpContentTypeExt } from './type/HttpContentType.type'
+import { HttpMethodType } from './type/HttpMethod.type'
+import { HttpErrorType } from './error/HttpErrorType'
+import { HttpError } from './error/HttpError'
 
 export class HttpRequest {
-    readonly method: HttpMethodType;
-    readonly url: string;
-    readonly path: string;
-    readonly params: object;
-    readonly header: object;
-    readonly body: object | undefined;
-    readonly multiparts: MultipartType[] | undefined;
-    readonly ext: HttpContentTypeExt;
-    private authenticated: number | undefined;
+    readonly method: HttpMethodType
+    readonly url: string
+    readonly path: string
+    readonly params: object
+    readonly header: object
+    readonly body: object | undefined
+    readonly multiparts: MultipartType[] | undefined
+    readonly ext: HttpContentTypeExt
+    private authenticated: number | undefined
 
     constructor(httpRequestData: HttpRequestData) {
-        this.method = httpRequestData.method;
-        this.url = httpRequestData.url;
-        this.path = httpRequestData.path;
-        this.params = httpRequestData.params;
-        this.ext = this.validateExt(path.extname(this.url));
-        this.header = httpRequestData.headers;
-        this.body = httpRequestData.body;
-        this.multiparts = httpRequestData.multiparts;
+        this.method = httpRequestData.method
+        this.url = httpRequestData.url
+        this.path = httpRequestData.path
+        this.params = httpRequestData.params
+        this.ext = this.validateExt(path.extname(this.url))
+        this.header = httpRequestData.headers
+        this.body = httpRequestData.body
+        this.multiparts = httpRequestData.multiparts
 
-        this.logReq();
+        this.logReq()
     }
 
     private logReq() {
-        logger.info('Http Request', this);
+        logger.info('Http Request', this)
     }
 
     private validateExt(ext: string): HttpContentTypeExt {
         if (isHttpContentTypeExt(ext)) {
-            return ext;
+            return ext
         }
-        throw new HttpError(HttpErrorType.NOT_SUPPORT_EXTENSION);
+        throw new HttpError(HttpErrorType.NOT_SUPPORT_EXTENSION)
     }
 
     public setAuthenticated(userId: number) {
-        this.authenticated = userId;
+        this.authenticated = userId
     }
 
     public getAuthenticated() {
         if (!this.authenticated) {
-            throw new HttpError(HttpErrorType.AUTHENTICATED_FAILED);
+            throw new HttpError(HttpErrorType.AUTHENTICATED_FAILED)
         }
 
-        return this.authenticated;
+        return this.authenticated
     }
 }

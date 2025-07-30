@@ -1,6 +1,6 @@
-import dotenv from 'dotenv';
+import dotenv from 'dotenv'
 
-dotenv.config();
+dotenv.config()
 
 export const mysqlConfig = {
     host: process.env.DB_HOST,
@@ -10,4 +10,4 @@ export const mysqlConfig = {
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,
-};
+}

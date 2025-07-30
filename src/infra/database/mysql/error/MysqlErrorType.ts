@@ -15,4 +15,4 @@ export const MysqlErrorType = {
         code: 500,
         message: 'Mysql server connection not found. Connect mysql server first.',
     },
-} as const;
+} as const

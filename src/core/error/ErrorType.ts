@@ -1,6 +1,6 @@
 interface ErrorType {
-    name: string;
-    code: number;
-    message: string;
-    fatal?: boolean;
+    name: string
+    code: number
+    message: string
+    fatal?: boolean
 }

@@ -1,7 +1,7 @@
 import {describe, test, expect, beforeEach} from "@jest/globals"
 import {HttpParser} from "../../../cat/http/HttpParser"
 import {HttpError} from "../../../cat/http/error/HttpError"
-import {BaseError} from "../../../src/core/error/BaseError"
+import {BaseError} from "../../../cat/core/error/BaseError"
 import {HttpErrorType} from "../../../cat/http/error/HttpErrorType"
 
 describe('HttpParser 테스트', () => {

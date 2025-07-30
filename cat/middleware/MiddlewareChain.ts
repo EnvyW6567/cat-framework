@@ -2,7 +2,7 @@ import { Middleware } from './Middleware'
 import { MiddlewareIterator } from './MiddlewareIterator'
 import { HttpResponse } from '../http/HttpResponse'
 import { HttpRequest } from '../http/HttpRequest'
-import { Injectable } from '../../core/decorator/class/Injectable.decorator'
+import { Injectable } from '../core/decorator/class/Injectable.decorator'
 
 @Injectable()
 export class MiddlewareChain {

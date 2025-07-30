@@ -1,6 +1,6 @@
 import mysql, { Pool, PoolOptions } from 'mysql2/promise'
 import { logger } from '../../../core/logger/Logger'
-import { Injectable } from '../../../core/decorator/class/Injectable.decorator'
+import { Injectable } from '../../../../cat'
 import { MysqlError } from './error/MysqlError'
 import { MysqlErrorType } from './error/MysqlErrorType'
 

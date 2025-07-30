@@ -1,11 +1,11 @@
-import {DIContainer} from "../../../src/core/container/DIContainer"
-import {Injectable} from "../../../src/core/decorator/class/Injectable.decorator"
+import {CatContainer} from "../../../cat/core/container/Cat.container"
+import {Injectable} from "../../../cat/core/decorator/class/Injectable.decorator"
 
 describe('@Injectable 테스트', () => {
-    let container: DIContainer
+    let container: CatContainer
 
     beforeEach(() => {
-        container = DIContainer.getInstance()
+        container = CatContainer.getInstance()
         container['constructors'].clear()
         container['instances'].clear()
     })

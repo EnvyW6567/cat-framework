@@ -1,9 +1,9 @@
-import { Injectable } from '../../../core/decorator/class/Injectable.decorator'
-import { HttpRequest } from '../../http/HttpRequest'
-import { HttpResponse } from '../../http/HttpResponse'
-import { BaseError } from '../../../core/error/BaseError'
-import { logger } from '../../../core/logger/Logger'
-import { Middleware } from '../Middleware'
+import { Injectable } from '../../../cat/core/decorator/class/Injectable.decorator'
+import { HttpRequest } from '../../../cat/http/HttpRequest'
+import { HttpResponse } from '../../../cat/http/HttpResponse'
+import { BaseError } from '../../core/error/BaseError'
+import { logger } from '../../core/logger/Logger'
+import { Middleware } from '../../../cat/middleware/Middleware'
 
 @Injectable()
 export class ErrorHandler implements Middleware {

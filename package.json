@@ -6,6 +6,7 @@
   "scripts": {
     "start": "ts-node app.ts",
     "build": "ts-node generateDependencies.ts",
+    "debug": "LOG_LEVEL=info ts-node app.ts",
     "test": "jest",
     "format": "prettier --write \"src/**/*.{js,ts}\"",
     "format:check": "prettier --check \"src/**/*.{js,ts}\""

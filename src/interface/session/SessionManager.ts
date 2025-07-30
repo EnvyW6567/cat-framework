@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid'
 
-import { Injectable } from '../../core/decorator/class/Injectable.decorator'
+import { Injectable } from '../../../cat/core/decorator/class/Injectable.decorator'
 import { SessionErrorType } from './error/SessionErrorType'
 import { SessionError } from './error/SessionError'
 

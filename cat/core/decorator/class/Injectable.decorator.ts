@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { DIContainer } from '../../container/DIContainer'
+import { CatContainer } from '../../container/Cat.container'
 
 type InjectableType = 'controller' | 'service' | 'repository' | 'injectable'
 
@@ -10,7 +10,7 @@ function createInjectableDecorator(type: InjectableType) {
 
             Reflect.defineMetadata('injectableType', type, target)
 
-            DIContainer.getInstance().register(dependencyName, target)
+            CatContainer.getInstance().register(dependencyName, target)
 
             return target
         }

@@ -2,7 +2,7 @@ import { HttpMethodType, isHttpMethodType } from './type/HttpMethod.type'
 import { HttpError } from './error/HttpError'
 import { HttpErrorType } from './error/HttpErrorType'
 import { HttpVersionType, isHttpVersionType } from './type/HttpVersion.type'
-import { Injectable } from '../../core/decorator/class/Injectable.decorator'
+import { Injectable } from '../core/decorator/class/Injectable.decorator'
 import { CRLF } from './constants/constants'
 import { HttpContentTypeType } from './type/HttpContentType.type'
 

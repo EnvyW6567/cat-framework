@@ -1,20 +1,20 @@
 import 'reflect-metadata'
-import {DIContainer} from "../../../src/core/container/DIContainer"
+import {CatContainer} from "../../../cat/core/container/Cat.container"
 
-describe('DIContainer 테스트', () => {
-    let container: DIContainer
+describe('CatContainer 테스트', () => {
+    let container: CatContainer
 
     beforeEach(() => {
-        container = DIContainer.getInstance()
+        container = CatContainer.getInstance()
     })
 
     afterEach(() => {
-        (DIContainer as any).instance = null
+        (CatContainer as any).instance = null
     })
 
     test('싱글톤 인스턴스 생성해야 함', () => {
-        const instance1 = DIContainer.getInstance()
-        const instance2 = DIContainer.getInstance()
+        const instance1 = CatContainer.getInstance()
+        const instance2 = CatContainer.getInstance()
         expect(instance1).toBe(instance2)
     })
 

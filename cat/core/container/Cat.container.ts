@@ -1,18 +1,20 @@
-import {logger} from "../logger/Logger"
+import {Injectable} from "../decorator/class/Injectable.decorator";
 
-export class DIContainer {
-    private static instance: DIContainer
+@Injectable()
+export class CatContainer {
+    private static instance: CatContainer
+
     private constructors: Map<string, any> = new Map() // 의존성 클래스 생성자 저장소
     private instances: Map<string, any> = new Map() // 의존성 실제 객체 저장소
     private instantiating: Set<string> = new Set() // 순환 의존성 방지를 위한 객체 정보 저장소
 
     private constructor() {}
 
-    static getInstance(): DIContainer {
-        if (!DIContainer.instance) {
-            DIContainer.instance = new DIContainer()
+    static getInstance(): CatContainer {
+        if (!CatContainer.instance) {
+            CatContainer.instance = new CatContainer()
         }
-        return DIContainer.instance
+        return CatContainer.instance
     }
 
     register(name: string, constructor: any): void {
@@ -34,7 +36,6 @@ export class DIContainer {
         try {
             const paramTypes = Reflect.getMetadata('design:paramtypes', constructor) || []
             const injectionTokens = Reflect.getMetadata('custom:paramtypes', constructor) || []
-
             const resolvedInjections = paramTypes.map((param: any, index: number) =>
                 this.resolve(injectionTokens[index] || param.name))
 
@@ -45,7 +46,6 @@ export class DIContainer {
             return instance
         } finally {
             this.instantiating.delete(name)
-            logger.info("instanitated: " + name)
         }
     }
 

@@ -1,8 +1,8 @@
 import {describe, test, expect, beforeEach} from "@jest/globals"
-import {HttpParser} from "../../../src/interface/http/HttpParser"
-import {HttpError} from "../../../src/interface/http/error/HttpError"
+import {HttpParser} from "../../../cat/http/HttpParser"
+import {HttpError} from "../../../cat/http/error/HttpError"
 import {BaseError} from "../../../src/core/error/BaseError"
-import {HttpErrorType} from "../../../src/interface/http/error/HttpErrorType"
+import {HttpErrorType} from "../../../cat/http/error/HttpErrorType"
 
 describe('HttpParser 테스트', () => {
     let httpParser: HttpParser

@@ -1,7 +1,6 @@
-import { GetMapping } from '../../core/decorator/method/RequestMapper.decorator'
 import fs from 'fs/promises'
-import { Controller } from '../../core/decorator/class/Controller.decorator'
-import { HttpResponseDto } from '../http/HttpResponse.dto'
+import { Controller, GetMapping } from '../../../cat'
+import { HttpResponseDto } from '../../../cat/http/HttpResponse.dto'
 
 @Controller()
 export class StaticController {

@@ -2,12 +2,12 @@ import fs from 'fs/promises'
 import path from "path"
 import dotenv from "dotenv"
 
-import {Router} from "../../../src/interface/router/Router"
-import {HttpRequest} from "../../../src/interface/http/HttpRequest"
-import {HttpResponse} from "../../../src/interface/http/HttpResponse"
-import {HttpContentTypeExt} from "../../../src/interface/http/type/HttpContentType.type"
-import {HttpMethodType} from "../../../src/interface/http/type/HttpMethod.type"
-import {HttpError} from "../../../src/interface/http/error/HttpError"
+import {Router} from "../../../cat/router/Router"
+import {HttpRequest} from "../../../cat/http/HttpRequest"
+import {HttpResponse} from "../../../cat/http/HttpResponse"
+import {HttpContentTypeExt} from "../../../cat/http/type/HttpContentType.type"
+import {HttpMethodType} from "../../../cat/http/type/HttpMethod.type"
+import {HttpError} from "../../../cat/http/error/HttpError"
 
 dotenv.config()
 jest.mock('fs/promises')

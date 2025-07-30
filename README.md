@@ -137,18 +137,18 @@ Cat Framework는 **의존성 주입(DI, Dependency Injection) 컨테이너를 �
 - NestJS처럼 별도의 모듈 파일을 생성하지 않고 **DI 컨테이너를 자동 관리**합니다.
 - 빌드 타임에 `@Injectable`, `@Service`, `@Controller` 등의 클래스를 자동으로 탐색하여 DI 컨테이너에 등록합니다.
 
-- `DIContainer.ts`
+- `CatContainer.ts`
 ``` typescript
-export class DIContainer {
-    private static instance: DIContainer;
+export class CatContainer {
+    private static instance: CatContainer;
     private constructors: Map<string, any> = new Map();
     private instances: Map<string, any> = new Map();
 
-    static getInstance(): DIContainer {
-        if (!DIContainer.instance) {
-            DIContainer.instance = new DIContainer();
+    static getInstance(): CatContainer {
+        if (!CatContainer.instance) {
+            CatContainer.instance = new CatContainer();
         }
-        return DIContainer.instance;
+        return CatContainer.instance;
     }
 
     register(name: string, constructor: any): void {
@@ -188,7 +188,7 @@ function createInjectableDecorator(type: InjectableType) {
         return function (target: any) {
             const dependencyName = name || target.name;
             Reflect.defineMetadata('injectableType', type, target);
-            DIContainer.getInstance().register(dependencyName, target);
+            CatContainer.getInstance().register(dependencyName, target);
             return target;
         };
     };
@@ -199,11 +199,11 @@ function createInjectableDecorator(type: InjectableType) {
 ``` typescript
 export function Controller(basePath: string = ''): ClassDecorator {
     return function (target: any) {
-        const router = DIContainer.getInstance().resolve<Router>('Router');
-        if (!router) throw new Error('Router is not registered in DIContainer');
+        const router = CatContainer.getInstance().resolve<Router>('Router');
+        if (!router) throw new Error('Router is not registered in CatContainer');
         Reflect.defineMetadata('isController', true, target);
         Reflect.defineMetadata('basePath', basePath, target);
-        DIContainer.getInstance().register(target.name, target);
+        CatContainer.getInstance().register(target.name, target);
     };
 }
 ```

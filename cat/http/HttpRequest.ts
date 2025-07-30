@@ -1,5 +1,5 @@
 import { HttpRequestData, MultipartType } from './HttpParser'
-import { logger } from '../../core/logger/Logger'
+import { logger } from '../../src/core/logger/Logger'
 import path from 'path'
 import { HttpContentTypeExt, isHttpContentTypeExt } from './type/HttpContentType.type'
 import { HttpMethodType } from './type/HttpMethod.type'

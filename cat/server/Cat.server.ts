@@ -1,23 +1,22 @@
-import net, { Server } from 'node:net'
-import { logger } from './src/core/logger/Logger'
-import { Injectable } from './src/core/decorator/class/Injectable.decorator'
-import { mysqlConfig } from './src/infra/database/mysql/MysqlConfig'
-import { HttpParser } from './src/interface/http/HttpParser'
-import { DIContainer } from './src/core/container/DIContainer'
-import { MysqlDatabase } from './src/infra/database/mysql/MysqlDatabase'
-import { MiddlewareChain } from './src/interface/middleware/MiddlewareChain'
-import { Middleware } from './src/interface/middleware/Middleware'
-import { HttpRequest } from './src/interface/http/HttpRequest'
-import { HttpRequestHandler } from './src/interface/http/HttpRequestHandler'
-import { HttpResponse } from './src/interface/http/HttpResponse'
-import { HTTP_CONTENT_TYPE } from './src/interface/http/type/HttpContentType.type'
-import { HttpError } from './src/interface/http/error/HttpError'
-import { CRLF } from './src/interface/http/constants/constants'
+import {Middleware} from "../middleware/Middleware";
+import net, {Server} from "node:net";
+import {HttpRequestHandler} from "../http/HttpRequestHandler";
+import {HttpResponse} from "../http/HttpResponse";
+import {HttpRequest} from "../http/HttpRequest";
+import {HTTP_CONTENT_TYPE} from "../http/type/HttpContentType.type";
+import {logger} from "../../src/core/logger/Logger";
+import {HttpError} from "../http/error/HttpError";
+import {CRLF} from "../http/constants/constants";
+import {mysqlConfig} from "../../src/infra/database/mysql/MysqlConfig";
+import {HttpParser} from "../http/HttpParser";
+import {MysqlDatabase} from "../../src/infra/database/mysql/MysqlDatabase";
+import {MiddlewareChain} from "../middleware/MiddlewareChain";
+import {Injectable} from "../core/decorator/class/Injectable.decorator";
+
 
 @Injectable()
 export class CatServer {
-    private static instance: CatServer
-    private server: Server | undefined
+    private server: Server | undefined;
 
     constructor(
         private readonly httpParser: HttpParser,
@@ -25,18 +24,14 @@ export class CatServer {
         private readonly middlewareChain: MiddlewareChain,
     ) {}
 
-    static getInstance(): CatServer {
-        if (!CatServer.instance) {
-            CatServer.instance = DIContainer.getInstance().resolve<CatServer>('CatServer')
-        }
-        return CatServer.instance
-    }
+
 
     use(middleware: Middleware) {
         this.middlewareChain.add(middleware)
 
         return this
     }
+
 
     async create() {
         this.server = net.createServer((socket) => {

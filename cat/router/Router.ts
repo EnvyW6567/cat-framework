@@ -4,9 +4,9 @@ import { HttpResponse } from '../http/HttpResponse'
 import { HttpError } from '../http/error/HttpError'
 import { HttpErrorType } from '../http/error/HttpErrorType'
 import { HttpMethodType } from '../http/type/HttpMethod.type'
-import { Injectable } from '../../core/decorator/class/Injectable.decorator'
+import { Injectable } from '../core/decorator/class/Injectable.decorator'
 import { HTTP_CONTENT_TYPE } from '../http/type/HttpContentType.type'
-import { DIContainer } from '../../core/container/DIContainer'
+import { CatContainer } from '../core/container/Cat.container'
 import { Middleware } from '../middleware/Middleware'
 
 type Routers = {
@@ -32,7 +32,7 @@ export class Router implements Middleware {
 
     static getInstance() {
         if (!Router.instance) {
-            return DIContainer.getInstance().resolve<Router>('Router')
+            return CatContainer.getInstance().resolve<Router>('Router')
         }
         return Router.instance
     }

@@ -25,6 +25,11 @@ export class CatContainer {
         if (this.instances.has(name)) {
             return this.instances.get(name)
         }
+
+        if (this.instantiating.has(name)) {
+            throw new Error(`Circular dependency detected : ${name}`)
+        }
+
         const constructor = this.constructors.get(name)
 
         if (!constructor) {

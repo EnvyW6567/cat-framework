@@ -1,13 +1,12 @@
-import fs from 'fs/promises'
-import { HttpRequest } from '../http/HttpRequest'
-import { HttpResponse } from '../http/HttpResponse'
-import { HttpError } from '../http/error/HttpError'
-import { HttpErrorType } from '../http/error/HttpErrorType'
-import { HttpMethod } from '../http/type/HttpMethod'
-import { Injectable } from '../core/decorator/class/Injectable.decorator'
-import { HTTP_CONTENT_TYPE } from '../http/type/HttpContentType'
-import { CatContainer } from '../core/container/Cat.container'
-import { Middleware } from '../middleware/Middleware'
+import fs from 'fs/promises';
+import { HttpRequest } from '../http/HttpRequest';
+import { HttpResponse } from '../http/HttpResponse';
+import { HttpError } from '../http/error/HttpError';
+import { HttpErrorType } from '../http/error/HttpErrorType';
+import { HttpMethod } from '../http/type/HttpMethod';
+import { Injectable } from '../core/decorator/class/Injectable.decorator';
+import { Middleware } from '../middleware/Middleware';
+import { HTTP_CONTENT_TYPE } from '../http/entity/HttpContentType';
 
 type Routers = {
     [method: string]: {
@@ -17,7 +16,7 @@ type Routers = {
 
 @Injectable()
 export class Router implements Middleware {
-    private readonly routers: Routers
+    private readonly routers: Routers;
 
     constructor() {
         this.routers = {
@@ -26,42 +25,42 @@ export class Router implements Middleware {
             DELETE: {},
             PUT: {},
             PATCH: {},
-        }
+        };
     }
 
     addRoute(method: HttpMethod, path: string, handler: any, err?: Error) {
-        this.routers[method][path] = handler
+        this.routers[method][path] = handler;
     }
 
     async handle(req: HttpRequest, res: HttpResponse, next: Function, err?: Error) {
-        const method = req.method
-        const path = req.path
-        const ext = req.ext
+        const method = req.method;
+        const path = req.path;
+        const ext = req.ext;
 
         if (ext) {
-            const buffer = await this.getStaticFile(ext, path)
+            const buffer = await this.getStaticFile(ext, path);
 
-            res.setBody(buffer).setStatus(200).setContentType(HTTP_CONTENT_TYPE[ext]).send()
+            res.setBody(buffer).setStatus(200).setContentType(HTTP_CONTENT_TYPE[ext]).send();
 
-            return
+            return;
         }
-        this.validateRouter(method, path)
+        this.validateRouter(method, path);
 
-        await this.routers[method][path](req, res)
+        await this.routers[method][path](req, res);
 
-        next()
+        next();
     }
 
     private async getStaticFile(ext: string, url: string) {
         if (ext === '.html') {
-            return await fs.readFile(process.env.VIEW_FILE_PATH + url)
+            return await fs.readFile(process.env.VIEW_FILE_PATH + url);
         }
-        return await fs.readFile(process.env.STATIC_FILE_PATH + url)
+        return await fs.readFile(process.env.STATIC_FILE_PATH + url);
     }
 
     private validateRouter(method: HttpMethod, url: string) {
         if (!this.routers[method]?.[url]) {
-            throw new HttpError(HttpErrorType.NOT_FOUND)
+            throw new HttpError(HttpErrorType.NOT_FOUND);
         }
     }
 }

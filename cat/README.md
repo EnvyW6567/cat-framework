@@ -1,4 +1,4 @@
-# 🐱 Cat Framework
+# Cat Framework
 
 [![npm version](https://img.shields.io/npm/v/@envyw/cat-framework.svg)](https://www.npmjs.com/package/@envyw/cat-framework)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -14,8 +14,6 @@
 #### 🔧 **Express 스타일의 직관적이고 유연한 미들웨어 시스템**
 
 #### 📁 **내장 파일 업로드 multipart/form-data 를 위한 별도 라이브러리 불필요**
-
----
 
 ### **🍃 Spring-Like Node.js 웹 프레임워크**
 
@@ -126,8 +124,6 @@ export class UserService {
 }
 ```
 
----
-
 ## 🌱 설치
 
 ```bash
@@ -189,7 +185,7 @@ cat(App).then(app => app.start())
 ⚠️ typescript JIT transform 모듈을 사용해서 실행해야합니다. (보완 중)
 
 ```bash
-$ ts-node main.js
+$ ts-node main.ts
 Server running on port 3000
 ```
 
@@ -423,25 +419,8 @@ VIEW_FILE_PATH=./views
 
 이제 정적 파일들이 자동으로 제공됩니다.
 
-## 시스템 요구사항
-
-- **Node.js** >= 22.11.0
-- **TypeScript** >= 5.6.2
-
 ## 의존성
 
 - `reflect-metadata` - 데코레이터 메타데이터 (필수)
 - `class-transformer` - DTO 변환
 - `class-validator` - 요청 검증
-
-## 라이선스
-
-MIT
-
-## 기여하기
-
-기여를 환영합니다! [CONTRIBUTING.md](CONTRIBUTING.md)를 참조하세요.
-
-## 변경 사항
-
-[CHANGELOG.md](CHANGELOG.md)를 참조하세요.

@@ -1,13 +1,13 @@
-export type HeaderType = {
+export type Header = {
     [key: string]: string
 }
 
-export class HttpResponseDto {
-    readonly header: HeaderType
+export class HttpResponseEntity {
+    readonly header: Header
     readonly body: object
     readonly status: number
 
-    constructor(body: any = {}, status: number = 200, header: HeaderType = {}) {
+    constructor(body: any = {}, status: number = 200, header: Header = {}) {
         this.header = header
         this.body = body
         this.status = status

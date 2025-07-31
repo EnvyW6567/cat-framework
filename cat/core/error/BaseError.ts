@@ -1,4 +1,4 @@
-import { logger } from '../../../src/core/logger/Logger'
+import { logger } from '../logger/Logger'
 
 export class BaseError extends Error {
     private readonly code: number

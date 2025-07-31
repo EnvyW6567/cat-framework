@@ -5,8 +5,8 @@ import dotenv from "dotenv"
 import {Router} from "../../../cat/router/Router"
 import {HttpRequest} from "../../../cat/http/HttpRequest"
 import {HttpResponse} from "../../../cat/http/HttpResponse"
-import {HttpContentTypeExt} from "../../../cat/http/type/HttpContentType.type"
-import {HttpMethodType} from "../../../cat/http/type/HttpMethod.type"
+import {HttpContentTypeExt} from "../../../cat/http/type/HttpContentType"
+import {HttpMethod} from "../../../cat/http/type/HttpMethod"
 import {HttpError} from "../../../cat/http/error/HttpError"
 
 dotenv.config()
@@ -26,7 +26,7 @@ describe('Router 테스트', () => {
         } as unknown as jest.Mocked<HttpResponse>
     })
 
-    const createMockRequest = (method: HttpMethodType, url: string, ext: HttpContentTypeExt = ''): HttpRequest => {
+    const createMockRequest = (method: HttpMethod, url: string, ext: HttpContentTypeExt = ''): HttpRequest => {
         return {
             method,
             url,
@@ -39,7 +39,7 @@ describe('Router 테스트', () => {
         } as unknown as HttpRequest
     }
 
-    const testRoute = async (method: HttpMethodType, url: string, ext: HttpContentTypeExt = '') => {
+    const testRoute = async (method: HttpMethod, url: string, ext: HttpContentTypeExt = '') => {
         const mockRequest = createMockRequest(method, url, ext)
         await router.handle(mockRequest, mockResponse, ()=>{})
         return mockRequest

@@ -3,7 +3,7 @@ import 'reflect-metadata'
 export const REQUEST_BODY_KEY = 'requestBody'
 
 export function RequestBody(): ParameterDecorator {
-    return (target: Object, propertyKey: string | symbol | undefined, parameterIndex: number) => {
+    return (target: object, propertyKey: string | symbol | undefined, parameterIndex: number) => {
         if (!propertyKey) {
             throw new Error('PropertyKey not defined')
         }

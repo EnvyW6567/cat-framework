@@ -1,5 +1,5 @@
 import mysql, { Pool, PoolOptions } from 'mysql2/promise'
-import { logger } from '../../../core/logger/Logger'
+import { logger } from '../../../../cat/core/logger/Logger'
 import { Injectable } from '../../../../cat'
 import { MysqlError } from './error/MysqlError'
 import { MysqlErrorType } from './error/MysqlErrorType'

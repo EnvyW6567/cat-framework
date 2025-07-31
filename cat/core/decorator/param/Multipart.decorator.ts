@@ -3,7 +3,7 @@ import 'reflect-metadata'
 export const MULTIPART_KEY = 'multipart'
 
 export function Multipart(): ParameterDecorator {
-    return (target: Object, propertyKey: string | symbol | undefined, parameterIndex: number) => {
+    return (target: object, propertyKey: string | symbol | undefined, parameterIndex: number) => {
         if (!propertyKey) {
             throw new Error('PropertyKey not defined')
         }

@@ -1,6 +1,6 @@
 import fs from 'fs/promises'
 import { Controller, GetMapping } from '../../../cat'
-import { HttpResponseDto } from '../../../cat/http/HttpResponse.dto'
+import { HttpResponseEntity } from '../../../cat/http/entity/HttpResponse.entity'
 
 @Controller()
 export class StaticController {
@@ -8,34 +8,34 @@ export class StaticController {
     async getIndex() {
         const buffer = await fs.readFile(process.env.VIEW_FILE_PATH + '/index.html')
 
-        return new HttpResponseDto(buffer, 200, { 'Content-Type': 'text/html' })
+        return new HttpResponseEntity(buffer, 200, { 'Content-Type': 'text/html' })
     }
 
     @GetMapping('/login')
     async getLogin() {
         const buffer = await fs.readFile(process.env.VIEW_FILE_PATH + '/login.html')
 
-        return new HttpResponseDto(buffer, 200, { 'Content-Type': 'text/html' })
+        return new HttpResponseEntity(buffer, 200, { 'Content-Type': 'text/html' })
     }
 
     @GetMapping('/signup')
     async getSignup() {
         const buffer = await fs.readFile(process.env.VIEW_FILE_PATH + '/signup.html')
 
-        return new HttpResponseDto(buffer, 200, { 'Content-Type': 'text/html' })
+        return new HttpResponseEntity(buffer, 200, { 'Content-Type': 'text/html' })
     }
 
     @GetMapping('/write')
     async getWrite() {
         const buffer = await fs.readFile(process.env.VIEW_FILE_PATH + '/write.html')
 
-        return new HttpResponseDto(buffer, 200, { 'Content-Type': 'text/html' })
+        return new HttpResponseEntity(buffer, 200, { 'Content-Type': 'text/html' })
     }
 
     @GetMapping('/post')
     async getPost() {
         const buffer = await fs.readFile(process.env.VIEW_FILE_PATH + '/post.html')
 
-        return new HttpResponseDto(buffer, 200, { 'Content-Type': 'text/html' })
+        return new HttpResponseEntity(buffer, 200, { 'Content-Type': 'text/html' })
     }
 }

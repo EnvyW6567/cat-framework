@@ -3,7 +3,7 @@ import 'reflect-metadata'
 export const REQUEST_PARAM_KEY = 'requestParam'
 
 export function RequestParam(): ParameterDecorator {
-    return (target: Object, propertyKey: string | symbol | undefined, parameterIndex: number) => {
+    return (target: object, propertyKey: string | symbol | undefined, parameterIndex: number) => {
         if (!propertyKey) {
             throw new Error('PropertyKey not defined')
         }

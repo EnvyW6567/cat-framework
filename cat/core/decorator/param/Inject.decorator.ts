@@ -1,6 +1,6 @@
 export function Inject(token: string): ParameterDecorator {
     return function (
-        target: Object,
+        target: object,
         propertyKey: string | symbol | undefined,
         parameterIndex: number,
     ) {

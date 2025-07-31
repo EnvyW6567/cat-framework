@@ -1,13 +1,13 @@
 import { HttpRequestData, MultipartType } from './HttpParser'
-import { logger } from '../../src/core/logger/Logger'
+import { logger } from '../core/logger/Logger'
 import path from 'path'
-import { HttpContentTypeExt, isHttpContentTypeExt } from './type/HttpContentType.type'
-import { HttpMethodType } from './type/HttpMethod.type'
+import { HttpContentTypeExt, isHttpContentTypeExt } from './type/HttpContentType'
+import { HttpMethod } from './type/HttpMethod'
 import { HttpErrorType } from './error/HttpErrorType'
 import { HttpError } from './error/HttpError'
 
 export class HttpRequest {
-    readonly method: HttpMethodType
+    readonly method: HttpMethod
     readonly url: string
     readonly path: string
     readonly params: object
@@ -26,8 +26,6 @@ export class HttpRequest {
         this.header = httpRequestData.headers
         this.body = httpRequestData.body
         this.multiparts = httpRequestData.multiparts
-
-        this.logReq()
     }
 
     private logReq() {

@@ -12,7 +12,7 @@ import { validate } from 'class-validator';
 import { BaseErrorType } from '../../error/BaseErrorType';
 import { AUTHENTICATION_KEY } from '../param/Authenticated.decorator';
 import { MULTIPART_KEY } from '../param/Multipart.decorator';
-import { logger } from '../../logger/Logger';
+import { logger } from '../../logger/CatLogger';
 
 type ParamMapper = (req: HttpRequest, index: number, paramType?: any) => Promise<any> | any
 

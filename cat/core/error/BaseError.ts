@@ -1,23 +1,24 @@
-import { logger } from '../logger/Logger'
+import { logger } from '../logger/CatLogger';
+import { ErrorType } from './Error.type';
 
 export class BaseError extends Error {
-    private readonly code: number
-    private readonly exceptionType: string
+    private readonly code: number;
+    private readonly exceptionType: string;
 
     constructor(exceptionType: ErrorType) {
-        super(exceptionType.message)
+        super(exceptionType.message);
 
-        this.code = exceptionType.code
-        this.exceptionType = exceptionType.name
+        this.code = exceptionType.code;
+        this.exceptionType = exceptionType.name;
 
-        logger.warn(exceptionType.message, exceptionType)
+        logger.warn(exceptionType.message, exceptionType);
     }
 
     getErrorType() {
-        return this.exceptionType
+        return this.exceptionType;
     }
 
     getCode() {
-        return this.code
+        return this.code;
     }
 }

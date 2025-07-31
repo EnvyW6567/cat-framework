@@ -1,7 +1,6 @@
-import { Injectable } from '../decorator/class/Injectable.decorator';
+import { Injectable } from '../decorator';
 import { Middleware } from '../../middleware/Middleware';
-import { HttpResponse } from '../../http/HttpResponse';
-import { HttpRequest } from '../../http/HttpRequest';
+import { HttpRequest, HttpResponse } from '../../http';
 import { HttpError } from '../../http/error/HttpError';
 import { BaseError } from '../error/BaseError';
 import { logger } from '../logger/CatLogger';

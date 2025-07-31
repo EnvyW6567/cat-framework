@@ -1,6 +1,6 @@
 import { HttpError } from '../error/HttpError';
 import { HttpErrorType } from '../error/HttpErrorType';
-import { HTTP_VERSION } from '../entity/HttpVersion';
+import { HTTP_VERSION } from '../constants/HttpVersion';
 
 
 export type HttpVersion = (typeof HTTP_VERSION)[number]

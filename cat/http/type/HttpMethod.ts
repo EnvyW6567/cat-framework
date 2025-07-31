@@ -1,6 +1,6 @@
 import { HttpError } from '../error/HttpError';
 import { HttpErrorType } from '../error/HttpErrorType';
-import { HTTP_METHOD } from '../entity/HttpMethod';
+import { HTTP_METHOD } from '../constants/HttpMethod';
 
 
 export type HttpMethod = (typeof HTTP_METHOD)[number]

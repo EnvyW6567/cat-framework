@@ -4,8 +4,8 @@ import { HttpContentType } from './type/HttpContentType';
 import { SetCookie } from './type/SetCookie';
 import { Header } from './entity/HttpResponse.entity';
 import { CRLF } from './constants/util';
-import { HTTP_STATUS } from './entity/HttpStatus';
-import { HTTP_CONTENT_TYPE } from './entity/HttpContentType';
+import { HTTP_STATUS } from './constants/HttpStatus';
+import { HTTP_CONTENT_TYPE } from './constants/HttpContentType';
 
 export class HttpResponse {
     private readonly socket;

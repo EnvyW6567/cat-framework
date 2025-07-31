@@ -6,7 +6,7 @@ import { HttpErrorType } from '../http/error/HttpErrorType';
 import { HttpMethod } from '../http/type/HttpMethod';
 import { Injectable } from '../core/decorator/class/Injectable.decorator';
 import { Middleware } from '../middleware/Middleware';
-import { HTTP_CONTENT_TYPE } from '../http/entity/HttpContentType';
+import { HTTP_CONTENT_TYPE } from '../http/constants/HttpContentType';
 
 type Routers = {
     [method: string]: {

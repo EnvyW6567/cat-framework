@@ -8,7 +8,7 @@ import { CRLF } from '../http/constants/util';
 import { HttpParser } from '../http/HttpParser';
 import { MiddlewareChain } from '../middleware/MiddlewareChain';
 import { Injectable } from '../core/decorator/class/Injectable.decorator';
-import { HTTP_CONTENT_TYPE } from '../http/entity/HttpContentType';
+import { HTTP_CONTENT_TYPE } from '../http/constants/HttpContentType';
 import { ErrorContext, ErrorReporter } from '../core/error/ErrorReporter';
 import { logger } from '../core/logger/CatLogger';
 import { ErrorHandlerMiddleware } from '../core/middleware/ErrorHandler.middleware';

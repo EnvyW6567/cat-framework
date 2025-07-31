@@ -1,4 +1,4 @@
-import { HTTP_CONTENT_TYPE } from '../entity/HttpContentType';
+import { HTTP_CONTENT_TYPE } from '../constants/HttpContentType';
 
 export type HttpContentTypeExt = keyof typeof HTTP_CONTENT_TYPE
 export type HttpContentType = (typeof HTTP_CONTENT_TYPE)[HttpContentTypeExt]

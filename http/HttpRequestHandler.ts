@@ -63,12 +63,13 @@ export class HttpRequestHandler {
             }
 
             if (this.headers[CONTENT_TYPE]?.includes(MULTIPART_FORM_DATA)) {
-                const boundaryMatch = this.headers[CONTENT_TYPE].match(/boundary=(-+\w+)/i);
+                const boundaryMatch = this.headers[CONTENT_TYPE].match(/boundary=([^;\s]+)/i);
 
-                if (boundaryMatch) {
-                    this.boundary = boundaryMatch[1];
-                    this.headers[CONTENT_TYPE] = this.headers[CONTENT_TYPE].split(':')[0];
+                if (!boundaryMatch) {
+                    throw new HttpError(HttpErrorType.NOT_FOUND_REQUEST);
                 }
+                this.boundary = boundaryMatch[1];
+                this.headers[CONTENT_TYPE] = this.headers[CONTENT_TYPE].split(':')[0];
             }
 
             this.buffer = this.buffer.subarray(headerEnd + BYTE_SIZE);
@@ -93,16 +94,14 @@ export class HttpRequestHandler {
         const multipartHeaderEnd = data.indexOf(CRLF + CRLF);
         const multipartHeader = data.subarray(0, multipartHeaderEnd).toString();
 
-        if (this.httpRequestData) {
-            const body = data.subarray(multipartHeaderEnd + BYTE_SIZE);
-            const { filename, contentType } = this.parseMultipartHeader(multipartHeader);
+        const body = data.subarray(multipartHeaderEnd + BYTE_SIZE);
+        const { filename, contentType } = this.parseMultipartHeader(multipartHeader);
 
-            const multipart: MultipartType = { filename, contentType, body };
+        const multipart: MultipartType = { filename, contentType, body };
 
-            this.httpRequestData.multiparts = [multipart];
+        (this.httpRequestData as HttpRequestData).multiparts = [multipart];
 
-            return;
-        }
+        return;
     }
 
     private parseMultipartHeader(multipartHeader: string) {

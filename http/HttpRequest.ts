@@ -28,17 +28,6 @@ export class HttpRequest {
         this.multiparts = httpRequestData.multiparts;
     }
 
-    private logReq() {
-        logger.info('Http Request', this);
-    }
-
-    private validateExt(ext: string): HttpContentTypeExt {
-        if (isHttpContentTypeExt(ext)) {
-            return ext;
-        }
-        throw new HttpError(HttpErrorType.NOT_SUPPORT_EXTENSION);
-    }
-
     public setAuthenticated(userId: number) {
         this.authenticated = userId;
     }
@@ -49,5 +38,16 @@ export class HttpRequest {
         }
 
         return this.authenticated;
+    }
+
+    private logReq() {
+        logger.info('Http Request', this);
+    }
+
+    private validateExt(ext: string): HttpContentTypeExt {
+        if (isHttpContentTypeExt(ext)) {
+            return ext;
+        }
+        throw new HttpError(HttpErrorType.NOT_SUPPORT_EXTENSION);
     }
 }

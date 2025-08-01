@@ -1,9 +1,7 @@
 import fs from 'fs/promises';
-import { HttpRequest } from '../http';
-import { HttpResponse } from '../http';
 import { HttpError } from '../http/error/HttpError';
 import { HttpErrorType } from '../http/error/HttpErrorType';
-import { HttpMethod } from '../http';
+import { HttpMethod, HttpRequest, HttpResponse } from '../http';
 import { Injectable } from '../core/decorator';
 import { Middleware } from '../middleware/Middleware';
 import { HTTP_CONTENT_TYPE } from '../http/constants/HttpContentType';

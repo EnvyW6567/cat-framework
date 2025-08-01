@@ -33,7 +33,7 @@ export class HttpRequest {
     }
 
     public getAuthenticated() {
-        if (!this.authenticated) {
+        if (this.authenticated === undefined || this.authenticated === null) {
             throw new HttpError(HttpErrorType.AUTHENTICATED_FAILED);
         }
 

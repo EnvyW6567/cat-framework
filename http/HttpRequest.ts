@@ -15,7 +15,7 @@ export class HttpRequest {
     readonly body: object | undefined;
     readonly multiparts: MultipartType[] | undefined;
     readonly ext: HttpContentTypeExt;
-    private authenticated: number | undefined;
+    private authenticated: number | string | undefined;
 
     constructor(httpRequestData: HttpRequestData) {
         this.method = httpRequestData.method;
@@ -28,7 +28,7 @@ export class HttpRequest {
         this.multiparts = httpRequestData.multiparts;
     }
 
-    public setAuthenticated(userId: number) {
+    public setAuthenticated(userId: number | string) {
         this.authenticated = userId;
     }
 

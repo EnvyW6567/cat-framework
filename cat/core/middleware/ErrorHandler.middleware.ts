@@ -12,6 +12,7 @@ export class ErrorHandlerMiddleware implements Middleware {
             return next();
         }
 
+
         try {
             if (err instanceof HttpError) {
                 this.handleHttpError(err, res);

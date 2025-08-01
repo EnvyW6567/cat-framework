@@ -49,4 +49,14 @@ export const HttpErrorType = {
         code: 400,
         message: 'request not found',
     },
-} as const
+    NOT_FOUND_BOUNDARY: {
+        name: 'NOT_FOUND_BOUNDARY',
+        code: 400,
+        message: 'request content-type is multipart but cannot find boundary header',
+    },
+    INVALID_HTTP_REQUEST: {
+        name: 'INVALID_HTTP_REQUEST',
+        code: 400,
+        message: 'invalid http request',
+    },
+} as const;

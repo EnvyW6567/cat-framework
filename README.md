@@ -7,7 +7,7 @@
 
 ![Coverage](https://img.shields.io/badge/HTTP_Module_coverage-100%25-brightgreen)
 
-## [**🚀 주요 특징 ➞️**](docs/README.md)
+## [**🚀 주요 특징 ➞️**](docs/Feature)
 
 #### 🎯 **데코레이터 기반의 현대적이고 선언적인 개발 방식**
 

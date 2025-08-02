@@ -80,10 +80,10 @@ export class HttpResponse {
     public setCookie(setCookie: SetCookie): HttpResponse {
         let cookieStr = `${setCookie.name}=${setCookie.value}`;
 
-        if (setCookie.options) {
-            cookieStr += Object.entries(setCookie.options)
+        if (Object.keys(setCookie.options).length !== 0) {
+            cookieStr += '; ' + Object.entries(setCookie.options)
                 .map(([key, value]) => (typeof value === 'boolean' ? key : `${key}=${value}`))
-                .join('');
+                .join('; ');
         }
         this.headers.set('Set-Cookie', cookieStr);
 

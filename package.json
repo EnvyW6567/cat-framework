@@ -1,6 +1,6 @@
 {
   "name": "@envyw/cat-framework",
-  "version": "1.0.2",
+  "version": "1.0.8",
   "description": "Node.js 웹 애플리케이션 프레임워크",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

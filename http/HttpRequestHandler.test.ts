@@ -163,6 +163,64 @@ describe('HttpRequestHandler 테스트', () => {
             expect(multipart.contentType).toBe('application/pdf');
         });
 
+        it('filename이 없는 multipart 헤더에 대해 HttpError를 발생시켜야 함', () => {
+            const boundary = 'noFilenameBoundary';
+            const requestData = createMockHttpRequestData({
+                headers: {
+                    'Content-Length': '200',
+                    'Content-Type': `multipart/form-data; boundary=${boundary}`,
+                },
+            });
+            mockHttpParser.parse.mockReturnValue(requestData);
+
+            const multipartData = [
+                `--${boundary}`,
+                'Content-Disposition: form-data; name="field"',  // filename 없음
+                'Content-Type: text/plain',
+                '',
+                'field content',
+                `--${boundary}--`,
+            ].join(CRLF);
+
+            const chunk = Buffer.from(`POST /upload HTTP/1.1${CRLF}Content-Length: 200${CRLF}Content-Type: multipart/form-data; boundary=${boundary}${CRLF}${CRLF}${multipartData}`);
+
+            expect(() => httpRequestHandler.handleData(chunk)).toThrow(HttpError);
+            expect(() => httpRequestHandler.handleData(chunk)).toThrow(
+                expect.objectContaining({
+                    message: HttpErrorType.INVALID_FILE_TYPE.message,
+                }),
+            );
+        });
+
+        it('Content-Type이 없는 multipart 헤더에 대해 HttpError를 발생시켜야 함', () => {
+            const boundary = 'noContentTypeBoundary';
+            const requestData = createMockHttpRequestData({
+                headers: {
+                    'Content-Length': '200',
+                    'Content-Type': `multipart/form-data; boundary=${boundary}`,
+                },
+            });
+            mockHttpParser.parse.mockReturnValue(requestData);
+
+            const multipartData = [
+                `--${boundary}`,
+                'Content-Disposition: form-data; name="file"; filename="test.txt"',
+                // Content-Type 없음
+                '',
+                'file content',
+                `--${boundary}--`,
+            ].join(CRLF);
+
+            const chunk = Buffer.from(`POST /upload HTTP/1.1${CRLF}Content-Length: 200${CRLF}Content-Type: multipart/form-data; boundary=${boundary}${CRLF}${CRLF}${multipartData}`);
+
+            expect(() => httpRequestHandler.handleData(chunk)).toThrow(HttpError);
+            expect(() => httpRequestHandler.handleData(chunk)).toThrow(
+                expect.objectContaining({
+                    message: HttpErrorType.INVALID_FILE_TYPE.message,
+                }),
+            );
+        });
+
         it('parseMultipart에서 multiparts 배열이 올바르게 설정되어야 함', () => {
             const boundary = 'arrayTestBoundary';
             const requestData = createMockHttpRequestData({

@@ -5,7 +5,9 @@
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D22.11.0-brightgreen.svg)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-%3E%3D5.6.2-blue.svg)](https://www.typescriptlang.org/)
 
-## **🚀 주요 특징**
+![Coverage](https://img.shields.io/badge/HTTP_Module_coverage-100%25-brightgreen)
+
+## [**🚀 주요 특징 ➞️**](docs/README.md)
 
 #### 🎯 **데코레이터 기반의 현대적이고 선언적인 개발 방식**
 
@@ -13,7 +15,7 @@
 
 #### 🔧 **Express 스타일의 직관적이고 유연한 미들웨어 시스템**
 
-#### 📁 **내장 파일 업로드 multipart/form-data 를 위한 별도 라이브러리 불필요**
+---
 
 ### **🍃 Spring-Like Node.js 웹 프레임워크**
 

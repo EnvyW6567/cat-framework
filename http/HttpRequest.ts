@@ -4,7 +4,6 @@ import { HttpContentTypeExt, isHttpContentTypeExt } from './type/HttpContentType
 import { HttpMethod } from './type/HttpMethod';
 import { HttpErrorType } from './error/HttpErrorType';
 import { HttpError } from './error/HttpError';
-import { logger } from '../core/logger/CatLogger';
 
 export class HttpRequest {
     readonly method: HttpMethod;
@@ -38,10 +37,6 @@ export class HttpRequest {
         }
 
         return this.authenticated;
-    }
-
-    private logReq() {
-        logger.info('Http Request', this);
     }
 
     private validateExt(ext: string): HttpContentTypeExt {

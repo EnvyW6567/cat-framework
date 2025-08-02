@@ -115,7 +115,9 @@ export class HttpRequestHandler {
             const filename = filenameMatch[1];
             const contentType = contentTypeMatch[1];
 
-            if (validateHttpContentType(contentType) && filename) return { filename, contentType };
+            if (validateHttpContentType(contentType) && filename) {
+                return { filename, contentType };
+            }
         }
 
         throw new HttpError(HttpErrorType.INVALID_FILE_TYPE);

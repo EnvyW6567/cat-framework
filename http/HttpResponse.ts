@@ -28,8 +28,9 @@ export class HttpResponse {
     public setStatus(statusCode: number) {
         if (!(statusCode in HTTP_STATUS)) {
             this.statusCode = 500;
-        }
 
+            return this;
+        }
         this.statusCode = statusCode as HttpStatus;
 
         return this;

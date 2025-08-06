@@ -1,7 +1,7 @@
 {
   "name": "@envyw/cat-framework",
   "version": "1.0.8",
-  "description": "Node.js 웹 애플리케이션 프레임워크",
+  "description": "Node.js Web Application Framework",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -13,10 +13,18 @@
     "web",
     "http"
   ],
-  "author": "your-name",
+  "author": "envyw",
   "license": "MIT",
   "engines": {
     "node": ">=22.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EnvyW6567/cat-framework.git"
+  },
+  "homepage": "https://github.com/EnvyW6567/cat-framework#readme",
+  "bugs": {
+    "url": "https://github.com/EnvyW6567/cat-framework/issues"
   },
   "peerDependencies": {
     "class-transformer": "^0.5.1",
